@@ -10,6 +10,9 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+    meta: {
+      title: "chandelure blog - Clog",
+    },
   },
   {
     path: "/about",
@@ -19,11 +22,17 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    meta: {
+      title: "About - Clog",
+    },
   },
   {
     path: "/articles/:slug",
     name: "Article",
     component: Article,
+    meta: {
+      title: "Articles - Clog",
+    },
   },
 ];
 
@@ -37,6 +46,13 @@ const router = new VueRouter({
       y: 0,
     };
   },
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.title) {
+    document.title = to.meta.title;
+  }
+  next();
 });
 
 export default router;
