@@ -1,5 +1,6 @@
 <template>
-  <v-container>
+  <v-container fluid>
+    <app-loader :isLoad="dataLoad"></app-loader>
     <v-row>
       <v-col lg="3" md="2" sm="1" cols="0" class="d-none d-lg-flex"></v-col>
       <v-col lg="6" md="8" sm="10" cols="12" class="mx-auto">
@@ -7,7 +8,6 @@
           max-width="690px"
           class="mx-auto my-lg-10 my-md-8 my-sm-6 my-4"
         >
-          <home-loader :isLoad="dataLoad"></home-loader>
           <section
             v-for="(articlePre, index) in articlePreList"
             v-bind:key="articlePre.id"
@@ -34,16 +34,17 @@
 </template>
 
 <script>
-import ArticlePre from "../components/ArticlePre.vue";
 import "../assets/style/markdown.scss";
 import "highlight.js/styles/default.css";
-import HomeLoader from "../components/HomeLoader.vue";
+
+import ArticlePre from "../components/ArticlePre.vue";
+import AppLoader from "../components/AppLoader.vue";
 
 export default {
   name: "Home",
   components: {
     ArticlePre,
-    HomeLoader,
+    AppLoader,
   },
   data() {
     return {
