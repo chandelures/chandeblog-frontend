@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import "../assets/style/markdown.scss";
+import "../style/markdown.scss";
 import "highlight.js/styles/default.css";
 
 import ArticleDetail from "../components/ArticleDetail.vue";
