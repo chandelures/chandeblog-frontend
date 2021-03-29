@@ -1,24 +1,11 @@
-# front
+# Chandeblog Front End
 
-## Project setup
-```
-npm install
-```
+This is a front end project for [chandeblog](https://blog.chandelure.com) based on vuejs. The back end blog project is https://github.com/chandelures/chandeblog.git.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Credits
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- [Vuejs](https://github.com/vuejs/vue)
 
-### Lints and fixes files
-```
-npm run lint
-```
+## License
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[MIT License](https://raw.githubusercontent.com/chandelures/chandeblog-frontend/dev/LICENSE)
