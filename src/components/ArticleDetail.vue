@@ -1,7 +1,7 @@
 <template>
   <section v-if="content">
-    <div class="text-h4 text-md-h3 font-weight-black mb-6" v-text="title"></div>
-    <div class="text-body-2 mb-6">
+    <div class="text-h4 text-md-h3 font-weight-black" v-text="title"></div>
+    <div class="text-body-2 my-4 my-md-6">
       <v-avatar class="mr-3" size="35">
         <img alt="" :src="avatar" />
       </v-avatar>

@@ -1,3 +1,5 @@
+@import "~vuetify/src/styles/styles.sass";
+
 .markdown-body {
   // Base
   p,
@@ -28,7 +30,6 @@
     page-break-after: avoid;
     break-after: avoid-page;
     page-break-inside: avoid;
-    orphans: 4;
     margin: 1rem 0;
   }
   h1 {
@@ -54,7 +55,10 @@
   p {
     font-size: 18px;
     line-height: 30px;
-    orphans: 4;
+
+    @media #{map-get($display-breakpoints, 'sm-and-down')} {
+      line-height: 28px;
+    }
   }
 
   // Link
