@@ -3,6 +3,11 @@ module.exports = {
 
   transpileDependencies: ["vuetify"],
 
+  vuetify: {
+    customVariables: ["~/assets/variables.scss"],
+    treeShake: true,
+  },
+
   configureWebpack: {
     devServer: {
       host: "0.0.0.0",

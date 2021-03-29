@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="text-body-2 mb-4">
+    <div class="text-body-2">
       <span class="grey--text text--darken-2">
         {{ created | formatDate }}
       </span>
     </div>
-    <div class="text-h5 text-md-h4 font-weight-black mb-4">
+    <div class="text-h4 font-weight-black my-4">
       <router-link
         class="black--text text-decoration-none"
         :to="'/articles/' + slug"
