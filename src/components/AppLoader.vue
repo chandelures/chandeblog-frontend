@@ -6,11 +6,11 @@
       @mousewheel.prevent
       @touchmove.prevent
     >
+      <v-overlay :value="!isLoad" opacity="0.15">
+        <v-progress-circular indeterminate color="green darken-3" size="40">
+        </v-progress-circular>
+      </v-overlay>
     </v-responsive>
-    <v-overlay :value="!isLoad" opacity="0.15">
-      <v-progress-circular indeterminate color="green darken-3">
-      </v-progress-circular>
-    </v-overlay>
   </div>
 </template>
 
