@@ -3,6 +3,13 @@ module.exports = {
 
   transpileDependencies: ["vuetify"],
 
+  chainWebpack: (config) => {
+    config.plugin("html").tap((args) => {
+      args[0].title = "chandelure blog - Clog";
+      return args;
+    });
+  },
+
   configureWebpack: {
     devServer: {
       host: "0.0.0.0",
