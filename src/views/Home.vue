@@ -70,7 +70,7 @@ export default {
     getArticlePreList(page) {
       this.axios({
         method: "get",
-        url: "articles/",
+        url: "articles",
         params: {
           page: page,
           size: this.size,
