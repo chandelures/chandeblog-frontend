@@ -16,7 +16,7 @@
               contain
             ></v-img>
           </div>
-          <div class="text-caption">CopyRight © 2021 Chandelure</div>
+          <p class="mb-0 text-caption">{{ copyright }}</p>
         </v-col>
       </v-row>
     </v-container>
@@ -26,5 +26,10 @@
 <script>
 export default {
   name: "AppFooter",
+  data() {
+    return {
+      copyright: "CopyRight © 2021 Chandelure",
+    };
+  },
 };
 </script>

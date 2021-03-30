@@ -8,7 +8,7 @@
           max-width="690px"
           class="mx-auto my-lg-10 my-md-8 my-sm-6 my-4"
         >
-          <section
+          <div
             v-for="(articlePre, index) in articlePreList"
             v-bind:key="articlePre.id"
           >
@@ -17,7 +17,7 @@
               class="my-6"
               v-if="index < articlePreList.length - 1"
             ></v-divider>
-          </section>
+          </div>
           <v-pagination
             v-if="count > 1"
             class="mt-12"

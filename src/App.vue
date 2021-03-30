@@ -21,9 +21,5 @@ export default {
     AppBar,
     AppFooter,
   },
-
-  data: () => ({}),
 };
 </script>
-
-<style></style>

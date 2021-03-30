@@ -1,25 +1,27 @@
 <template>
-  <div>
-    <div class="text-body-2">
-      <span class="grey--text text--darken-2">
-        {{ created | formatDate }}
-      </span>
-    </div>
-    <div class="text-h4 font-weight-black my-4">
+  <section>
+    <span class="grey--text text--darken-2 text-body-2">
+      {{ created | formatDate }}
+    </span>
+    <h1 class="text-h4 font-weight-black my-4">
       <router-link
         class="black--text text-decoration-none"
         :to="'/articles/' + slug"
         v-text="title"
       >
       </router-link>
-    </div>
-    <div class="markdown-body" v-html="markdownAbstract" v-highlight></div>
+    </h1>
+    <section
+      class="markdown-body"
+      v-html="markdownAbstract"
+      v-highlight
+    ></section>
     <router-link
       :to="'/articles/' + slug"
       class="text-body-2 green--text text--darken-3 text-decoration-none"
       >Read more
     </router-link>
-  </div>
+  </section>
 </template>
 
 <script>
