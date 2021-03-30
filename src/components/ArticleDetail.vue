@@ -1,14 +1,18 @@
 <template>
   <section v-if="content">
-    <div class="text-h4 text-md-h3 font-weight-black" v-text="title"></div>
+    <h1 class="text-h4 text-md-h3 font-weight-black" v-text="title"></h1>
     <div class="text-body-2 my-4 my-md-6">
       <v-avatar class="mr-3" size="35">
         <img alt="" :src="avatar" />
       </v-avatar>
-      <span class="green--text text--darken-3 mr-3">chandelure</span>
+      <span class="green--text text--darken-3 mr-3">{{ author }}</span>
       <span class="grey--text text--darken-2">{{ created | formatDate }}</span>
     </div>
-    <div class="markdown-body" v-html="markdownContent" v-highlight></div>
+    <section
+      class="markdown-body"
+      v-html="markdownContent"
+      v-highlight
+    ></section>
   </section>
 </template>
 
@@ -19,6 +23,7 @@ export default {
     title: String,
     content: String,
     created: String,
+    author: String,
     avatar: String,
   },
   computed: {

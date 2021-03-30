@@ -1,6 +1,6 @@
 <template>
-  <v-app-bar color="green darken-3" dark max-height="60px">
-    <v-container class="py-1 fill-height">
+  <v-app-bar color="green darken-3" dark min-height="65">
+    <v-container class="fill-height">
       <v-row>
         <v-col
           lg="8"
@@ -14,17 +14,16 @@
             <v-img alt="CBLOG" src="../assets/img/logo.png" width="100" contain>
             </v-img>
           </router-link>
-          <v-btn class="d-none d-md-flex" to="/" :ripple="false" text plain>
-            Home
-          </v-btn>
           <v-btn
+            v-for="(link, index) in links"
             class="d-none d-md-flex"
-            to="/about"
+            :key="index"
+            :to="link.to"
             :ripple="false"
             text
             plain
           >
-            About
+            {{ link.name }}
           </v-btn>
           <v-spacer class="d-none d-md-flex"> </v-spacer>
         </v-col>
@@ -36,5 +35,13 @@
 <script>
 export default {
   name: "AppBar",
+  data() {
+    return {
+      links: [
+        { name: "Home", to: "/" },
+        { name: "About", to: "/about" },
+      ],
+    };
+  },
 };
 </script>
