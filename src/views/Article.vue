@@ -39,7 +39,7 @@ export default {
     getArticle() {
       this.axios({
         methods: "get",
-        url: "articles/" + this.$route.params.slug + "/",
+        url: "articles/" + this.$route.params.slug,
       })
         .then((response) => {
           this.dataLoad = true;
