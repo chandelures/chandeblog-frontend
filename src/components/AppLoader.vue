@@ -7,8 +7,8 @@
       @touchmove.prevent
     >
       <v-overlay :value="!isLoad" opacity="0">
-        <v-progress-circular indeterminate color="green darken-3" size="40">
-        </v-progress-circular>
+        <!--v-progress-circular indeterminate color="green darken-3" size="40">
+        </v-progress-circular-->
       </v-overlay>
     </v-responsive>
   </div>
