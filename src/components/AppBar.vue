@@ -17,6 +17,15 @@
           <v-btn class="d-none d-md-flex" to="/" :ripple="false" text plain>
             Home
           </v-btn>
+          <v-btn
+            class="d-none d-md-flex"
+            to="/about"
+            :ripple="false"
+            text
+            plain
+          >
+            About
+          </v-btn>
           <v-spacer class="d-none d-md-flex"> </v-spacer>
         </v-col>
       </v-row>
