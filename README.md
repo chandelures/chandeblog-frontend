@@ -1,20 +1,11 @@
-# chandeblog-frontend
+# Chandeblog Front End
 
-## Build Setup
+This is a front end project for [chandeblog](https://blog.chandelure.com) based on vuejs. The back end blog project is https://github.com/chandelures/chandeblog.git.
 
-```bash
-# install dependencies
-$ npm install
+## Credits
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+- [Nuxt](https://github.com/nuxt/nuxt.js)
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+## License
 
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+[MIT License](https://github.com/chandelures/chandeblog/blob/master/LICENSE/)
