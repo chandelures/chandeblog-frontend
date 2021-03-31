@@ -49,6 +49,14 @@ export default {
         error(e)
       })
   },
+  data() {
+    return {
+      page: 1,
+      size: 5,
+      count: 0,
+      articleList: null,
+    }
+  },
   watch: {
     page(newPage) {
       this.dataLoad = false
@@ -79,14 +87,6 @@ export default {
       document.body.scrollTop = 0
       document.documentElement.scrollTop = 0
     },
-  },
-  data() {
-    return {
-      page: 1,
-      size: 5,
-      count: 0,
-      articleList: null,
-    }
   },
 }
 </script>
