@@ -11,11 +11,13 @@
       >
       </nuxt-link>
     </h1>
+    <!-- eslint-disable vue/no-v-html -->
     <section
       v-highlight
       class="markdown-body"
       v-html="markdownAbstract"
     ></section>
+    <!--eslint-enable-->
     <router-link
       :to="'/articles/' + slug"
       class="text-body-2 green--text text--darken-3 text-decoration-none"
