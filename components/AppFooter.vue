@@ -9,12 +9,7 @@
       <v-row>
         <v-col cols="12" class="d-flex justify-center align-center">
           <div class="mr-6 d-none d-md-flex">
-            <v-img
-              alt="CLOG"
-              src="../assets/img/logo.png"
-              width="100"
-              contain
-            ></v-img>
+            <v-img alt="CLOG" src="../img/logo.png" width="100" contain></v-img>
           </div>
           <p class="mb-0 text-caption">{{ copyright }}</p>
         </v-col>
@@ -25,6 +20,7 @@
 
 <script>
 export default {
+<<<<<<< HEAD:src/components/AppFooter.vue
   name: "AppFooter",
   data() {
     return {
@@ -32,4 +28,13 @@ export default {
     };
   },
 };
+=======
+  name: 'AppFooter',
+  data() {
+    return {
+      copyright: 'CopyRight © 2021 Chandelure',
+    }
+  },
+}
+>>>>>>> feat: change the framework to nuxt.js:components/AppFooter.vue
 </script>
