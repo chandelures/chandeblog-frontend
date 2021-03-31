@@ -8,11 +8,13 @@
       <span class="green--text text--darken-3 mr-3">{{ author }}</span>
       <span class="grey--text text--darken-2">{{ created | formatDate }}</span>
     </div>
+    <!-- eslint-disable vue/no-v-html -->
     <section
       v-highlight
       class="markdown-body"
       v-html="markdownContent"
     ></section>
+    <!--eslint-enable-->
   </section>
 </template>
 
