@@ -35,13 +35,19 @@ import '~/assets/style/markdown.scss'
 export default {
   name: 'Index',
   components: {},
-  async asyncData({ $axios }) {
-    const data = await $axios.$get('articles', {
-      params: {
-        size: 5,
-      },
-    })
-    return { articleList: data.results, count: data.count }
+  async asyncData({ $axios, error }) {
+    return await $axios
+      .get('articles', {
+        params: {
+          size: 5,
+        },
+      })
+      .then((res) => {
+        return { articleList: res.data.results, count: res.data.count }
+      })
+      .catch((e) => {
+        error(e)
+      })
   },
   watch: {
     page(newPage) {
@@ -52,14 +58,22 @@ export default {
   },
   methods: {
     async getNext(thePage) {
-      const data = await this.$axios.$get('articles', {
-        params: {
-          size: this.size,
-          page: thePage,
-        },
-      })
-      this.articleList = data.results
-      this.count = data.count
+      return await this.$axios
+        .get('articles', {
+          params: {
+            size: this.size,
+            page: thePage,
+          },
+        })
+        .then((res) => {
+          this.articleList = res.data.results
+          this.count = res.data.count
+        })
+        .catch((e) => {
+          if (e.response.status === 404) {
+            return this.$nuxt.error({ statusCode: 404, message: e.message })
+          }
+        })
     },
     backTop() {
       document.body.scrollTop = 0

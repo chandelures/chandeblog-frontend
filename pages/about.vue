@@ -25,9 +25,15 @@ export default {
   components: {
     ArticleDetail,
   },
-  async asyncData({ params, $axios }) {
-    const data = await $axios.$get('about')
-    return { article: data }
+  async asyncData({ $axios, error }) {
+    return await $axios
+      .get('about')
+      .then((res) => {
+        return { article: res.data }
+      })
+      .catch((e) => {
+        error({ statusCode: 404, message: 'About not found' })
+      })
   },
   data() {
     return {
