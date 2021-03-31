@@ -20,15 +20,6 @@
 
 <script>
 export default {
-<<<<<<< HEAD:src/components/AppFooter.vue
-  name: "AppFooter",
-  data() {
-    return {
-      copyright: "CopyRight © 2021 Chandelure",
-    };
-  },
-};
-=======
   name: 'AppFooter',
   data() {
     return {
@@ -36,5 +27,4 @@ export default {
     }
   },
 }
->>>>>>> feat: change the framework to nuxt.js:components/AppFooter.vue
 </script>

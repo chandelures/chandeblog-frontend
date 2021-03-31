@@ -4,30 +4,17 @@
       {{ created | formatDate }}
     </span>
     <h1 class="text-h4 font-weight-black my-4">
-<<<<<<< HEAD:src/components/ArticlePre.vue
-      <router-link
-=======
       <nuxt-link
->>>>>>> feat: change the framework to nuxt.js:components/ArticleListItem.vue
         class="black--text text-decoration-none"
         :to="'/articles/' + slug"
         v-text="title"
       >
-<<<<<<< HEAD:src/components/ArticlePre.vue
-      </router-link>
-    </h1>
-    <section
-      class="markdown-body"
-      v-html="markdownAbstract"
-      v-highlight
-=======
       </nuxt-link>
     </h1>
     <section
       v-highlight
       class="markdown-body"
       v-html="markdownAbstract"
->>>>>>> feat: change the framework to nuxt.js:components/ArticleListItem.vue
     ></section>
     <router-link
       :to="'/articles/' + slug"
