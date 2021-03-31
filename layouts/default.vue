@@ -19,9 +19,5 @@ export default {
     AppBar,
     AppFooter,
   },
-<<<<<<< HEAD:src/App.vue
-};
-=======
 }
->>>>>>> feat: change the framework to nuxt.js:layouts/default.vue
 </script>

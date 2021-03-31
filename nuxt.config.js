@@ -73,6 +73,6 @@ export default {
 
   // Loading config
   loading: {
-    color: 'purple',
+    color: '#9CCC65',
   },
 }

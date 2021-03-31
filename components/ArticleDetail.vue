@@ -9,15 +9,9 @@
       <span class="grey--text text--darken-2">{{ created | formatDate }}</span>
     </div>
     <section
-<<<<<<< HEAD:src/components/ArticleDetail.vue
-      class="markdown-body"
-      v-html="markdownContent"
-      v-highlight
-=======
       v-highlight
       class="markdown-body"
       v-html="markdownContent"
->>>>>>> feat: change the framework to nuxt.js:components/ArticleDetail.vue
     ></section>
   </section>
 </template>
