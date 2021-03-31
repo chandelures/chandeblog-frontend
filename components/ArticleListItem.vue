@@ -28,10 +28,22 @@
 export default {
   name: 'ArticleListItem',
   props: {
-    title: String,
-    abstract: String,
-    slug: String,
-    created: String,
+    title: {
+      type: String,
+      default: '',
+    },
+    abstract: {
+      type: String,
+      default: '',
+    },
+    slug: {
+      type: String,
+      default: '',
+    },
+    created: {
+      type: String,
+      default: '',
+    },
   },
   computed: {
     markdownAbstract() {

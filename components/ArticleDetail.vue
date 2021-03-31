@@ -20,11 +20,26 @@
 export default {
   name: 'ArticleDetail',
   props: {
-    title: String,
-    content: String,
-    created: String,
-    author: String,
-    avatar: String,
+    title: {
+      type: String,
+      default: '',
+    },
+    content: {
+      type: String,
+      default: '',
+    },
+    created: {
+      type: String,
+      default: '',
+    },
+    author: {
+      type: String,
+      default: '',
+    },
+    avatar: {
+      type: String,
+      default: '',
+    },
   },
   computed: {
     markdownContent() {
