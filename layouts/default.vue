@@ -3,7 +3,7 @@
     <app-bar></app-bar>
 
     <v-main background-color="grey lighten-3">
-      <router-view> </router-view>
+      <nuxt />
     </v-main>
 
     <app-footer></app-footer>
@@ -11,15 +11,17 @@
 </template>
 
 <script>
-import AppBar from "./components/AppBar.vue";
-import AppFooter from "./components/AppFooter.vue";
-
+import AppBar from '../components/AppBar.vue'
+import AppFooter from '../components/AppFooter.vue'
 export default {
-  name: "App",
-
+  name: 'App',
   components: {
     AppBar,
     AppFooter,
   },
+<<<<<<< HEAD:src/App.vue
 };
+=======
+}
+>>>>>>> feat: change the framework to nuxt.js:layouts/default.vue
 </script>
