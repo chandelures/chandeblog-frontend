@@ -25,18 +25,10 @@ export default {
   components: {
     ArticleDetail,
   },
-  async asyncData({ params, $axios, $marked, error }) {
-    return await $axios
-      .get('articles/' + params.slug)
-      .then((res) => {
-        res.data.content = $marked(res.data.content)
-        return {
-          article: res.data,
-        }
-      })
-      .catch((e) => {
-        error({ statusCode: 404, message: 'Article not found' })
-      })
+  async asyncData({ params, $axios, $marked }) {
+    const data = await $axios.$get('articles/' + params.slug)
+    data.content = $marked(data.content)
+    return { article: data }
   },
   data() {
     return {

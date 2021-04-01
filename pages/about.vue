@@ -25,16 +25,10 @@ export default {
   components: {
     ArticleDetail,
   },
-  async asyncData({ $axios, $marked, error }) {
-    return await $axios
-      .get('about')
-      .then((res) => {
-        res.data.content = $marked(res.data.content)
-        return { article: res.data }
-      })
-      .catch((e) => {
-        error({ statusCode: 404, message: 'About not found' })
-      })
+  async asyncData({ $axios, $marked }) {
+    const data = await $axios.get('about')
+    data.content = $marked(data.content)
+    return { article: data }
   },
   data() {
     return {
