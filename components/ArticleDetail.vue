@@ -9,7 +9,7 @@
       <span class="grey--text text--darken-2">{{ created | formatDate }}</span>
     </div>
     <!-- eslint-disable vue/no-v-html -->
-    <section v-highlight class="markdown-body" v-html="content"></section>
+    <section class="markdown-body" v-html="content"></section>
     <!--eslint-enable-->
   </section>
 </template>
