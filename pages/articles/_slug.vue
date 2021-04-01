@@ -25,11 +25,14 @@ export default {
   components: {
     ArticleDetail,
   },
-  async asyncData({ params, $axios, error }) {
+  async asyncData({ params, $axios, $marked, error }) {
     return await $axios
       .get('articles/' + params.slug)
       .then((res) => {
-        return { article: res.data }
+        res.data.content = $marked(res.data.content)
+        return {
+          article: res.data,
+        }
       })
       .catch((e) => {
         error({ statusCode: 404, message: 'Article not found' })
@@ -38,7 +41,27 @@ export default {
   data() {
     return {
       article: {},
-      dataLoad: false,
+    }
+  },
+  head() {
+    return {
+      title: this.article.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            this.article.content
+              .replace(/<[^>]+>/g, '')
+              .replace(/[\r\n]/g, '')
+              .slice(0, 100) + '...',
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.article.category,
+        },
+      ],
     }
   },
 }

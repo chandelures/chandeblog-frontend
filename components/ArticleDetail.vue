@@ -9,11 +9,7 @@
       <span class="grey--text text--darken-2">{{ created | formatDate }}</span>
     </div>
     <!-- eslint-disable vue/no-v-html -->
-    <section
-      v-highlight
-      class="markdown-body"
-      v-html="markdownContent"
-    ></section>
+    <section v-highlight class="markdown-body" v-html="content"></section>
     <!--eslint-enable-->
   </section>
 </template>
@@ -41,11 +37,6 @@ export default {
     avatar: {
       type: String,
       default: '',
-    },
-  },
-  computed: {
-    markdownContent() {
-      return this.$marked(this.content)
     },
   },
 }

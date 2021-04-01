@@ -25,10 +25,11 @@ export default {
   components: {
     ArticleDetail,
   },
-  async asyncData({ $axios, error }) {
+  async asyncData({ $axios, $marked, error }) {
     return await $axios
       .get('about')
       .then((res) => {
+        res.data.content = $marked(res.data.content)
         return { article: res.data }
       })
       .catch((e) => {
@@ -38,7 +39,6 @@ export default {
   data() {
     return {
       article: {},
-      dataLoad: false,
     }
   },
 }
