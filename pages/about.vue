@@ -26,7 +26,7 @@ export default {
     ArticleDetail,
   },
   async asyncData({ $axios, $marked }) {
-    const data = await $axios.get('about')
+    const data = await $axios.$get('about')
     data.content = $marked(data.content)
     return { article: data }
   },
