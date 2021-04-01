@@ -57,6 +57,11 @@ export default {
       articleList: null,
     }
   },
+  head() {
+    return {
+      title: 'Home',
+    }
+  },
   watch: {
     page(newPage) {
       this.dataLoad = false
