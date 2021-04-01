@@ -148,6 +148,8 @@
     color: #2e7d32 !important;
   }
   pre code {
+    display: block;
+    overflow-x: auto;
     padding: 0.6em !important;
   }
   kbd {
