@@ -27,9 +27,9 @@ export default {
   width: 100%;
 }
 .article-toc {
-  max-width: 1250px;
+  max-width: 1130px;
   * {
-    max-width: 250px;
+    max-width: 175px;
   }
   ul {
     padding-left: 0;
