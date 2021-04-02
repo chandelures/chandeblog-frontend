@@ -1,7 +1,9 @@
 <template>
   <v-container fluid>
     <v-row>
-      <v-col lg="3" md="2" sm="1" cols="0" class="d-none d-lg-flex"></v-col>
+      <v-col lg="3" md="2" sm="1" cols="0" class="d-none d-lg-flex">
+        <article-toc :toc="toc"></article-toc>
+      </v-col>
       <v-col lg="6" md="8" sm="10" cols="12" class="mx-auto">
         <v-responsive
           max-width="690"
@@ -19,20 +21,25 @@
 import '~/assets/style/markdown.scss'
 import 'highlight.js/styles/default.css'
 import ArticleDetail from '~/components/ArticleDetail.vue'
+import ArticleToc from '~/components/ArticleToc.vue'
 
 export default {
   name: 'Article',
   components: {
     ArticleDetail,
+    ArticleToc,
   },
   async asyncData({ params, $axios, $marked }) {
     const data = await $axios.$get('articles/' + params.slug)
-    if (data) data.content = $marked.markdedExtend(data.content)
-    return { article: data }
+    if (data) {
+      data.content = $marked.markedExtend(data.content)
+    }
+    return { article: data, toc: $marked.buildToc() }
   },
   data() {
     return {
       article: {},
+      toc: '',
     }
   },
   head() {
