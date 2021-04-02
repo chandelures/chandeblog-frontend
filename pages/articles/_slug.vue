@@ -27,7 +27,7 @@ export default {
   },
   async asyncData({ params, $axios, $marked }) {
     const data = await $axios.$get('articles/' + params.slug)
-    data.content = $marked(data.content)
+    if (data) data.content = $marked(data.content)
     return { article: data }
   },
   data() {

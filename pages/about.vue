@@ -27,7 +27,7 @@ export default {
   },
   async asyncData({ $axios, $marked }) {
     const data = await $axios.$get('about')
-    data.content = $marked(data.content)
+    if (data) data.content = $marked(data.content)
     return { article: data }
   },
   data() {
