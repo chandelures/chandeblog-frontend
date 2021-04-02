@@ -35,12 +35,17 @@ import '~/assets/style/markdown.scss'
 export default {
   name: 'Index',
   components: {},
-  async asyncData({ $axios }) {
+  async asyncData({ $axios, $marked }) {
     const data = await $axios.$get('articles', {
       params: {
         size: 5,
       },
     })
+    if (data) {
+      data.results.forEach((item) => {
+        item.abstract = $marked.marked(item.abstract)
+      })
+    }
     return { articleList: data.results, count: data.count }
   },
   data() {
@@ -71,6 +76,11 @@ export default {
           page: thePage,
         },
       })
+      if (data) {
+        data.results.forEach((item) => {
+          item.abstract = this.$marked.marked(item.abstract)
+        })
+      }
       this.articleList = data.results
       this.count = data.count
     },

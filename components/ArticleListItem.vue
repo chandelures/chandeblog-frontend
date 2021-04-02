@@ -12,7 +12,7 @@
       </nuxt-link>
     </h1>
     <!-- eslint-disable vue/no-v-html -->
-    <section class="markdown-body" v-html="markdownAbstract"></section>
+    <section class="markdown-body" v-html="abstract"></section>
     <!--eslint-enable-->
     <router-link
       :to="'/articles/' + slug"
@@ -41,11 +41,6 @@ export default {
     created: {
       type: String,
       default: '',
-    },
-  },
-  computed: {
-    markdownAbstract() {
-      return this.$marked.marked(this.abstract)
     },
   },
 }
