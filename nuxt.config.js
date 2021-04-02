@@ -1,4 +1,9 @@
 export default {
+  // ENV config
+  env: {
+    apiUrl: process.env.apiUrl || 'http://localhost:8000',
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - Clog',
@@ -41,21 +46,22 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: process.env.apiUrl || '',
+    baseURL: process.env.apiUrl,
     proxy: true,
     prefix: '/api',
+    credentials: true,
   },
 
   proxy: {
     '/api': {
-      target: process.env.apiUrl || '',
+      target: process.env.apiUrl,
       pathRewrite: {
         '^/api': '/',
         changeOrigin: true,
       },
     },
     '/media': {
-      target: process.env.apiUrl || '',
+      target: process.env.apiUrl,
       changeOrigin: true,
       secure: false,
       pathRewrite: {
