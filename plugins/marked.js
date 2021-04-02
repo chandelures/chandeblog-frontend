@@ -36,13 +36,14 @@ _marked.marked = (markdownString) => {
   return marked(markdownString)
 }
 
-_marked.markdedExtend = (markdownString) => {
+_marked.markedExtend = (markdownString) => {
   marked.setOptions({
     renderer: _renderer,
     highlight: (code) => {
       return hljs.highlightAuto(code).value
     },
   })
+  _marked.toc = []
   return marked(markdownString)
 }
 
@@ -56,7 +57,7 @@ _marked.buildToc = (minLevel = 2, maxLevel = 3) => {
     result += '</ul>\n'
   }
   const addLi = (anchor, text) => {
-    result += '<li><a href="#' + anchor + '">' + text + '<a></li>\n'
+    result += '<li><a href="#' + anchor + '">' + text + '</a></li>\n'
   }
   _marked.toc.forEach((item) => {
     if (item.level < minLevel || item.level > maxLevel) return
@@ -79,7 +80,6 @@ _marked.buildToc = (minLevel = 2, maxLevel = 3) => {
     levelStack.shift()
     addEndUl()
   }
-  _marked.toc = []
   return result
 }
 
