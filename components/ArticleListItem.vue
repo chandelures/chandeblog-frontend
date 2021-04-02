@@ -45,7 +45,7 @@ export default {
   },
   computed: {
     markdownAbstract() {
-      return this.$marked(this.abstract)
+      return this.$marked.marked(this.abstract)
     },
   },
 }
