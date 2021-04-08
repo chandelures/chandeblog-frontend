@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export default {
   // ENV config
   env: {
@@ -36,6 +38,7 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/sitemap',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -81,5 +84,56 @@ export default {
   // Loading config
   loading: {
     color: '#9CCC65',
+  },
+
+  // Sitemap config
+  sitemap: {
+    path: '/sitemap.xml',
+    gzip: true,
+    cacheTime: 1000 * 60 * 60 * 24,
+    generate: false,
+    routes(callback) {
+      axios.defaults.baseURL = process.env.apiUrl
+      const maxCount = 10000
+      axios
+        .all([
+          axios.get('articles', {
+            params: {
+              page: 1,
+              size: maxCount,
+            },
+          }),
+        ])
+        .then(
+          axios.spread(function (articlesRes) {
+            const baseRoutes = [
+              {
+                url: '/',
+                changefreq: 'daily',
+                priority: 1,
+                lastmod: new Date(),
+              },
+              {
+                url: '/about',
+                changefreq: 'daily',
+                priority: 1,
+                lastmod: new Date(),
+              },
+            ]
+            const articlesRoutes = articlesRes.data.results.map((item) => {
+              return {
+                url: '/articles/' + item.slug,
+                changefreq: 'daily',
+                priority: 0.9,
+                lastmod: new Date(item.created),
+              }
+            })
+            callback(null, baseRoutes.concat(articlesRoutes))
+          }),
+          function (err) {
+            throw err
+          }
+        )
+    },
   },
 }
