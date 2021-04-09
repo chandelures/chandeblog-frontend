@@ -65,10 +65,9 @@ export default {
     },
     '/media': {
       target: process.env.apiUrl,
-      changeOrigin: true,
-      secure: false,
       pathRewrite: {
         '^/media': '/media',
+        changeOrigin: true,
       },
     },
   },
