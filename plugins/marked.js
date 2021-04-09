@@ -7,6 +7,9 @@ const _marked = {}
 
 _marked.toc = []
 
+const minLevel = 2
+const maxLevel = 3
+
 const _renderer = (() => {
   const renderer = new marked.Renderer()
 
@@ -14,11 +17,12 @@ const _renderer = (() => {
     const _anchor =
       this.options.headerPrefix +
       _raw.toLowerCase().replace(/[^\w\\u4e00-\\u9fa5]]+/g, '-')
-    _marked.toc.push({
-      anchor: _anchor,
-      level: _level,
-      text: _text,
-    })
+    if (_level >= minLevel && _level <= maxLevel)
+      _marked.toc.push({
+        anchor: _anchor,
+        level: _level,
+        text: _text,
+      })
     return (
       '<h' + _level + ' id="' + _anchor + '">' + _text + '</h' + _level + '>\n'
     )
@@ -47,7 +51,7 @@ _marked.markedExtend = (markdownString) => {
   return marked(markdownString)
 }
 
-_marked.buildToc = (minLevel = 2, maxLevel = 3) => {
+_marked.buildToc = () => {
   const levelStack = []
   let result = ''
   const addStartUl = () => {
@@ -57,10 +61,10 @@ _marked.buildToc = (minLevel = 2, maxLevel = 3) => {
     result += '</ul>\n'
   }
   const addLi = (anchor, text) => {
-    result += '<li><a href="#' + anchor + '">' + text + '</a></li>\n'
+    result +=
+      '<li><a href="#' + anchor + '" class="anchor">' + text + '</a></li>\n'
   }
   _marked.toc.forEach((item) => {
-    if (item.level < minLevel || item.level > maxLevel) return
     let levelIndex = levelStack.indexOf(item.level)
     if (levelIndex === -1) {
       levelStack.unshift(item.level)
