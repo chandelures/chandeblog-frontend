@@ -1,10 +1,8 @@
 <template>
-  <div class="sidebar">
-    <div class="article-toc mx-auto mt-10">
-      <!-- eslint-disable vue/no-v-html -->
-      <div v-html="toc"></div>
-      <!--eslint-enable-->
-    </div>
+  <div class="article-toc">
+    <!-- eslint-disable vue/no-v-html -->
+    <div v-html="toc"></div>
+    <!--eslint-enable-->
   </div>
 </template>
 
@@ -21,17 +19,17 @@ export default {
 </script>
 
 <style lang="scss">
-.sidebar {
-  position: fixed;
-  width: 100%;
-}
 .article-toc {
-  max-width: 1130px;
-  * {
-    max-width: 150px;
+  position: sticky;
+  top: 30px;
+  float: right;
+  max-width: 175px;
+  ul:first-child > li:first-child {
+    margin-top: 0;
   }
   ul {
     border-right: 1px solid black;
+    padding-right: 15px;
     padding-left: 0;
   }
   ul > ul {
