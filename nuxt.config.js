@@ -38,13 +38,13 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
-    '@nuxtjs/sitemap',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/sitemap',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -91,7 +91,6 @@ export default {
     path: '/sitemap.xml',
     gzip: true,
     cacheTime: 1000 * 60 * 60 * 24,
-    generate: false,
     routes(callback) {
       axios.defaults.baseURL = process.env.apiUrl
       const maxCount = 10000
