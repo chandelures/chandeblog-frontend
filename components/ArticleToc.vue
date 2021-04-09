@@ -1,7 +1,6 @@
 <template>
   <div class="sidebar">
     <div class="article-toc mx-auto mt-10">
-      <div class="text-h6 font-weight-bold">目录</div>
       <!-- eslint-disable vue/no-v-html -->
       <div v-html="toc"></div>
       <!--eslint-enable-->
@@ -29,10 +28,14 @@ export default {
 .article-toc {
   max-width: 1130px;
   * {
-    max-width: 175px;
+    max-width: 150px;
   }
   ul {
+    border-right: 1px solid black;
     padding-left: 0;
+  }
+  ul > ul {
+    border: none;
   }
   ul > li {
     list-style: none;
