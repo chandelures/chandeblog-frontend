@@ -29,6 +29,7 @@ export default {
   },
   mounted() {
     this.getAnchors()
+    if (this.anchors.length !== 0) this.pos = this.anchors[0]
     window.addEventListener('scroll', this.handleScroll)
   },
   destroyed() {
@@ -90,6 +91,7 @@ export default {
   top: 30px;
   float: right;
   max-width: 175px;
+  min-width: 100px;
   ul:first-child > li:first-child {
     margin-top: 0;
   }
