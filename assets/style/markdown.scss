@@ -53,7 +53,6 @@
 
   // Paragraph
   p {
-    font-size: 18px;
     line-height: 30px;
 
     @media #{map-get($display-breakpoints, 'sm-and-down')} {
