@@ -41,28 +41,25 @@ export default {
         window.pageYOffset ||
         document.documentElement.scrollTop ||
         document.body.scrollTop
+
       for (let index = 0; index < this.anchors.length; index++) {
+        const elementOffset = document.querySelector(
+          '[id="' + this.anchors[index].replace('#', '') + '"]'
+        ).offsetTop
+
         if (index === this.anchors.length - 1) {
-          const element = document.querySelector(
-            '[id="' + this.anchors[index].replace('#', '') + '"]'
-          )
-          const elementOffset = element.offsetTop
           if (scrollTop > elementOffset) {
             this.pos = this.anchors[index]
           }
-          break
-        }
-        const element = document.querySelector(
-          '[id="' + this.anchors[index].replace('#', '') + '"]'
-        )
-        const nextElement = document.querySelector(
-          '[id="' + this.anchors[index + 1].replace('#', '') + '"]'
-        )
-        const elementOffset = element.offsetTop
-        const nextElementOffset = nextElement.offsetTop
-        if (scrollTop > elementOffset && scrollTop < nextElementOffset) {
-          this.pos = this.anchors[index]
-          break
+        } else {
+          const nextElementOffset = document.querySelector(
+            '[id="' + this.anchors[index + 1].replace('#', '') + '"]'
+          ).offsetTop
+
+          if (scrollTop > elementOffset && scrollTop < nextElementOffset) {
+            this.pos = this.anchors[index]
+            break
+          }
         }
       }
     },
