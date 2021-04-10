@@ -29,7 +29,6 @@ export default {
   },
   mounted() {
     this.getAnchors()
-    if (this.anchors.length !== 0) this.pos = this.anchors[0]
     window.addEventListener('scroll', this.handleScroll)
   },
   destroyed() {
@@ -66,9 +65,17 @@ export default {
     getAnchors() {
       const _anchors = []
       this.$el.querySelectorAll('a.anchor').forEach((item) => {
+        item.onclick = function (event) {
+          event.preventDefault()
+          const element = document.querySelector(
+            '[id="' + item.getAttribute('href').replace('#', '') + '"]'
+          )
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
         _anchors.push(item.getAttribute('href'))
       })
       this.anchors = _anchors
+      if (this.anchors.length !== 0) this.pos = this.anchors[0]
     },
     activeAnchor(pos) {
       const Anchor = this.$el.querySelector('[href="' + pos + '"]')
@@ -93,9 +100,6 @@ export default {
   min-width: 100px;
   ul:first-child > li:first-child {
     padding-top: 0;
-  }
-  li:last-child {
-    padding-bottom: 0;
   }
   ul {
     padding-left: 0;
