@@ -62,7 +62,7 @@
 
   // Link
   a {
-    color: #2e7d32 !important;
+    color: #{map-get($green, 'darken-3')} !important;
     cursor: pointer;
   }
 
@@ -107,7 +107,7 @@
   // Blockquote
   blockquote {
     padding-left: 1rem;
-    box-shadow: #2e7d32 2px 0px 0px 0px inset;
+    box-shadow: #{map-get($green, 'darken-3')} 2px 0px 0px 0px inset;
     color: grey;
   }
   blockquote > :last-child {
@@ -144,7 +144,7 @@
   }
   p code {
     padding: 0.2em 0.4em;
-    color: #2e7d32 !important;
+    color: #{map-get($green, 'darken-3')} !important;
   }
   pre code {
     display: block;
