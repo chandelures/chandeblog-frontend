@@ -5,7 +5,7 @@ import hljs from 'highlight.js'
 
 const _marked = {}
 
-_marked.toc = []
+_marked.tocNode = []
 
 const minLevel = 2
 const maxLevel = 3
@@ -18,7 +18,7 @@ const _renderer = (() => {
       this.options.headerPrefix +
       _raw.toLowerCase().replace(/[^\w\\u4e00-\\u9fa5]]+/g, '-')
     if (_level >= minLevel && _level <= maxLevel)
-      _marked.toc.push({
+      _marked.tocNode.push({
         anchor: _anchor,
         level: _level,
         text: _text,
@@ -47,7 +47,7 @@ _marked.markedExtend = (markdownString) => {
       return hljs.highlightAuto(code).value
     },
   })
-  _marked.toc = []
+  _marked.tocNode = []
   return marked(markdownString)
 }
 
@@ -64,7 +64,7 @@ _marked.buildToc = () => {
     result +=
       '<li><a href="#' + anchor + '" class="anchor">' + text + '</a></li>\n'
   }
-  _marked.toc.forEach((item) => {
+  _marked.tocNode.forEach((item) => {
     let levelIndex = levelStack.indexOf(item.level)
     if (levelIndex === -1) {
       levelStack.unshift(item.level)
