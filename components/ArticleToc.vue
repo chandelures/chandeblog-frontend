@@ -72,17 +72,19 @@ export default {
     },
     activeAnchor(pos) {
       const Anchor = this.$el.querySelector('[href="' + pos + '"]')
-      if (Anchor) Anchor.classList.add('active')
+      if (Anchor) Anchor.parentNode.classList.add('active')
     },
     deactiveAnchor(pos) {
       const Anchor = this.$el.querySelector('[href="' + pos + '"]')
-      if (Anchor) Anchor.classList.remove('active')
+      if (Anchor) Anchor.parentNode.classList.remove('active')
     },
   },
 }
 </script>
 
 <style lang="scss">
+@import '~vuetify/src/styles/styles.sass';
+
 .article-toc {
   position: sticky;
   top: 30px;
@@ -90,11 +92,12 @@ export default {
   max-width: 175px;
   min-width: 100px;
   ul:first-child > li:first-child {
-    margin-top: 0;
+    padding-top: 0;
+  }
+  li:last-child {
+    padding-bottom: 0;
   }
   ul {
-    border-right: 1px solid black;
-    padding-right: 15px;
     padding-left: 0;
   }
   ul > ul {
@@ -102,20 +105,21 @@ export default {
   }
   ul > li {
     list-style: none;
-    margin-top: 10px;
-    font-size: 15px;
-  }
-  ul > ul > li {
+    padding: 5px 10px;
     font-size: 13px;
-    font-weight: 300;
+    border-right: 2px solid #{map-get($grey, 'lighten-2')};
+    width: 100%;
   }
   a {
-    color: #616161;
+    color: #{map-get($grey, 'darken-1')};
     text-decoration: none;
   }
-  a.active {
-    color: black;
-    font-weight: bold;
+  li.active {
+    border-right: 2px solid #{map-get($green, 'darken-3')};
+    a {
+      color: #{map-get($green, 'darken-3')};
+      font-weight: bold;
+    }
   }
 }
 </style>
