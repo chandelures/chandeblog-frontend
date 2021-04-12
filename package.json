@@ -15,7 +15,7 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "core-js": "^3.10.1",
     "highlight.js": "^10.7.2",
-    "marked": "^2.0.1",
+    "marked": "^2.0.3",
     "nuxt": "^2.15.4"
   },
   "devDependencies": {
