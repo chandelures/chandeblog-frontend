@@ -63,11 +63,6 @@ export default {
               .replace(/[\r\n]/g, '')
               .slice(0, 100) + '...',
         },
-        {
-          hid: 'keywords',
-          name: 'keywords',
-          content: this.article.category,
-        },
       ],
     }
   },
