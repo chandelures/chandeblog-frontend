@@ -1,7 +1,7 @@
 <template>
   <div class="article-toc">
     <!-- eslint-disable vue/no-v-html -->
-    <div v-html="toc"></div>
+    <div v-html="buildToc"></div>
     <!--eslint-enable-->
   </div>
 </template>
@@ -10,9 +10,9 @@
 export default {
   name: 'ArticleToc',
   props: {
-    toc: {
-      type: String,
-      default: '',
+    tocNode: {
+      type: Array,
+      default: () => [],
     },
   },
   data() {
@@ -20,6 +20,43 @@ export default {
       pos: '',
       anchors: [],
     }
+  },
+  computed: {
+    buildToc() {
+      const levelStack = []
+      let result = ''
+      const addStartUl = () => {
+        result += '<ul>\n'
+      }
+      const addEndUl = () => {
+        result += '</ul>\n'
+      }
+      const addLi = (anchor, text) => {
+        result +=
+          '<li><a href="#' + anchor + '" class="anchor">' + text + '</a></li>\n'
+      }
+      this.tocNode.forEach((item) => {
+        let levelIndex = levelStack.indexOf(item.level)
+        if (levelIndex === -1) {
+          levelStack.unshift(item.level)
+          addStartUl()
+          addLi(item.anchor, item.text)
+        } else if (levelIndex === 0) {
+          addLi(item.anchor, item.text)
+        } else {
+          while (levelIndex--) {
+            levelStack.shift()
+            addEndUl()
+          }
+          addLi(item.anchor, item.text)
+        }
+      })
+      while (levelStack.length) {
+        levelStack.shift()
+        addEndUl()
+      }
+      return result
+    },
   },
   watch: {
     pos(newPos, oldPos) {

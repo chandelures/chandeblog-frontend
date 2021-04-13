@@ -51,42 +51,6 @@ _marked.markedExtend = (markdownString) => {
   return marked(markdownString)
 }
 
-_marked.buildToc = () => {
-  const levelStack = []
-  let result = ''
-  const addStartUl = () => {
-    result += '<ul>\n'
-  }
-  const addEndUl = () => {
-    result += '</ul>\n'
-  }
-  const addLi = (anchor, text) => {
-    result +=
-      '<li><a href="#' + anchor + '" class="anchor">' + text + '</a></li>\n'
-  }
-  _marked.tocNode.forEach((item) => {
-    let levelIndex = levelStack.indexOf(item.level)
-    if (levelIndex === -1) {
-      levelStack.unshift(item.level)
-      addStartUl()
-      addLi(item.anchor, item.text)
-    } else if (levelIndex === 0) {
-      addLi(item.anchor, item.text)
-    } else {
-      while (levelIndex--) {
-        levelStack.shift()
-        addEndUl()
-      }
-      addLi(item.anchor, item.text)
-    }
-  })
-  while (levelStack.length) {
-    levelStack.shift()
-    addEndUl()
-  }
-  return result
-}
-
 export default ({ app }, inject) => {
   inject('marked', _marked)
 }
