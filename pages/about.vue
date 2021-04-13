@@ -48,6 +48,22 @@ export default {
       toc: '',
     }
   },
+  head() {
+    return {
+      title: this.article.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            this.article.content
+              .replace(/<[^>]+>/g, '')
+              .replace(/[\r\n]/g, '')
+              .slice(0, 100) + '...',
+        },
+      ],
+    }
+  },
 }
 </script>
 
