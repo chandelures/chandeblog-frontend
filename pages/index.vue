@@ -81,8 +81,8 @@ export default {
           item.abstract = this.$marked.marked(item.abstract)
         })
       }
-      this.articleList = data.results
-      this.count = data.count
+      this.articleList = Object.freeze(data.results)
+      this.count = Object.freeze(data.count)
     },
     backTop() {
       document.body.scrollTop = 0
