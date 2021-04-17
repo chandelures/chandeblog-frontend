@@ -15,7 +15,7 @@
             ></v-divider>
           </div>
           <v-pagination
-            v-if="count > 1"
+            v-if="Math.ceil(count / size) > 1"
             v-model="page"
             class="mt-12"
             color="green darken-3"
