@@ -134,29 +134,33 @@ export default {
   top: 30px;
   float: right;
   max-width: 175px;
-  min-width: 100px;
+
   ul:first-child > li:first-child {
     padding-top: 0;
   }
+
   ul {
     padding-left: 0;
+    font-size: 0;
   }
-  ul > ul {
-    border: none;
-  }
+
   ul > li {
     list-style: none;
     padding: 5px 10px;
     font-size: 13px;
     border-right: 2px solid #{map-get($grey, 'lighten-2')};
     width: 100%;
+    display: inline-block;
   }
+
   a {
     color: #{map-get($grey, 'darken-1')};
     text-decoration: none;
   }
+
   li.active {
     border-right: 2px solid #{map-get($green, 'darken-3')};
+
     a {
       color: #{map-get($green, 'darken-3')};
       font-weight: bold;
