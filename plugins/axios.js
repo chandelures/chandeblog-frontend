@@ -4,9 +4,6 @@ export default ({ $axios, error }) => {
     if (code === 404) {
       error({ statusCode: 404, message: err.message })
       return Promise.resolve(false)
-    } else {
-      error(err)
-      return Promise.resolve(false)
     }
   })
 }

@@ -43,6 +43,8 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
+    '@nuxtjs/toast',
     '@nuxtjs/sitemap',
   ],
 
@@ -83,6 +85,34 @@ export default {
   // Loading config
   loading: {
     color: '#9CCC65',
+  },
+
+  // Toast config
+  toast: {
+    position: 'top-right',
+    duration: 2000,
+  },
+
+  // Auth config
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'token',
+          required: true,
+          type: 'Token',
+        },
+        user: {
+          property: false,
+        },
+        endpoints: {
+          login: { url: '/auth/token/login', method: 'post' },
+          logout: false,
+          user: { url: '/user/profile', method: 'get' },
+        },
+      },
+    },
+    localStorage: false,
   },
 
   // Sitemap config
