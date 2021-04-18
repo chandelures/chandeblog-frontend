@@ -46,6 +46,9 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
+    htmlAttrs: {
+      lang: 'zh-hans',
+    },
     titleTemplate: '%s - Clog',
     title: 'chandeblog',
     meta: [
