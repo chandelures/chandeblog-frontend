@@ -1,9 +1,47 @@
 import axios from 'axios'
+import webpack from 'webpack'
+
+const highlightLang = [
+  'bash',
+  'c',
+  'csharp',
+  'cpp',
+  'css',
+  'go',
+  'xml',
+  'http',
+  'json',
+  'java',
+  'javascript',
+  'kotlin',
+  'less',
+  'lua',
+  'makefile',
+  'markdown',
+  'nginx',
+  'objectivec',
+  'php',
+  'perl',
+  'plaintext',
+  'python',
+  'python-repl',
+  'r',
+  'ruby',
+  'rust',
+  'scss',
+  'sql',
+  'shell',
+  'swift',
+  'typescript',
+  'vbnet',
+  'yaml',
+]
 
 export default {
   // ENV config
   env: {
     apiUrl: process.env.apiUrl || 'http://localhost:8000',
+    highlightLang: highlightLang,
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -80,7 +118,14 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    plugins: [
+      new webpack.ContextReplacementPlugin(
+        /highlight\.js\/lib\/languages$/,
+        new RegExp(`^./(${highlightLang.join('|')})$`)
+      ),
+    ],
+  },
 
   // Loading config
   loading: {

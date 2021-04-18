@@ -1,7 +1,14 @@
 'use strict'
 
 import marked from 'marked'
-import hljs from 'highlight.js'
+import hljs from 'highlight.js/lib/core'
+
+const languages = process.env.highlightLang
+
+languages.forEach((langName) => {
+  const langModule = require(`highlight.js/lib/languages/${langName}`)
+  hljs.registerLanguage(langName, langModule)
+})
 
 const _marked = {}
 
@@ -33,8 +40,9 @@ const _renderer = (() => {
 
 _marked.marked = (markdownString) => {
   marked.setOptions({
-    highlight: (code) => {
-      return hljs.highlightAuto(code).value
+    highlight: (code, lang) => {
+      const language = hljs.getLanguage(lang) ? lang : 'plaintext'
+      return hljs.highlight(code, { language }).value
     },
   })
   return marked(markdownString)
@@ -43,8 +51,9 @@ _marked.marked = (markdownString) => {
 _marked.markedExtend = (markdownString) => {
   marked.setOptions({
     renderer: _renderer,
-    highlight: (code) => {
-      return hljs.highlightAuto(code).value
+    highlight: (code, lang) => {
+      const language = hljs.getLanguage(lang) ? lang : 'plaintext'
+      return hljs.highlight(code, { language }).value
     },
   })
   _marked.tocNode = []
