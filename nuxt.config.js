@@ -105,13 +105,6 @@ export default {
         changeOrigin: true,
       },
     },
-    '/media': {
-      target: process.env.apiUrl,
-      pathRewrite: {
-        '^/media': '/media',
-        changeOrigin: true,
-      },
-    },
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
