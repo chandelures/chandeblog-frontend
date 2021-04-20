@@ -1,24 +1,30 @@
 <template>
-  <div>
-    <form @submit.prevent="userLogin">
-      <div>
-        <label>Username</label>
-        <input v-model="login.username" type="text" />
-      </div>
-      <div>
-        <label>Password</label>
-        <input v-model="login.password" type="text" />
-      </div>
-      <div>
-        <button type="submit">Submit</button>
-      </div>
+  <v-container class="text-center my-12">
+    <div class="text-h5 my-10">Login in Chandelure Blog</div>
+    <form class="mx-auto" @submit.prevent="userLogin">
+      <v-text-field
+        v-model="login.username"
+        label="用户"
+        color="black"
+        required
+      >
+      </v-text-field>
+      <v-text-field
+        v-model="login.password"
+        label="密码"
+        color="black"
+        required
+      >
+      </v-text-field>
+      <v-btn type="submit" class="green darken-3 my-6" dark>登录 </v-btn>
     </form>
-  </div>
+  </v-container>
 </template>
 
 <script>
 export default {
   name: 'Login',
+  layout: 'empty',
   middleware: ['auth'],
   auth: 'guest',
   data() {
@@ -26,6 +32,10 @@ export default {
       login: {
         username: '',
         password: '',
+      },
+      loginRule: {
+        username: [(v) => !!v || '请输入用户名'],
+        password: [(v) => !!v || '请输入密码'],
       },
     }
   },
@@ -46,3 +56,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+form {
+  max-width: 300px;
+}
+</style>
