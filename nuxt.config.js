@@ -161,48 +161,48 @@ export default {
     path: '/sitemap.xml',
     gzip: true,
     cacheTime: 1000 * 60 * 60 * 24,
-    routes(callback) {
+    exclude: ['/admin', '/login'],
+    routes: async () => {
       axios.defaults.baseURL = process.env.apiUrl
-      const maxCount = 10000
-      axios
-        .all([
-          axios.get('articles', {
-            params: {
-              page: 1,
-              size: maxCount,
-            },
-          }),
-        ])
-        .then(
-          axios.spread(function (articlesRes) {
-            const baseRoutes = [
-              {
-                url: '/',
-                changefreq: 'daily',
-                priority: 1,
-                lastmod: new Date(),
-              },
-              {
-                url: '/about',
-                changefreq: 'daily',
-                priority: 1,
-                lastmod: new Date(),
-              },
-            ]
-            const articlesRoutes = articlesRes.data.results.map((item) => {
-              return {
-                url: '/articles/' + item.slug,
-                changefreq: 'daily',
-                priority: 0.9,
-                lastmod: new Date(item.created),
-              }
-            })
-            callback(null, baseRoutes.concat(articlesRoutes))
-          }),
-          function (err) {
-            throw err
+
+      const baseRoutes = [
+        {
+          url: '/',
+          changefreq: 'daily',
+          priority: 1,
+          lastmod: new Date(),
+        },
+        {
+          url: '/about',
+          changefreq: 'daily',
+          priority: 1,
+          lastmod: new Date(),
+        },
+      ]
+
+      let articlesRoutes = []
+
+      const getArticleRoutes = async (url) => {
+        const { data } = await axios.get(url)
+        const routes = data.results.map((item) => {
+          return {
+            url: '/articles/' + item.slug,
+            changefreq: 'daily',
+            priority: 1,
+            lastmod: new Date(item.updated),
           }
-        )
+        })
+
+        articlesRoutes = articlesRoutes.concat(routes)
+
+        if (data.next) {
+          return await getArticleRoutes(data.next)
+        }
+      }
+
+      await getArticleRoutes('articles')
+
+      return baseRoutes.concat(articlesRoutes)
     },
   },
 }
