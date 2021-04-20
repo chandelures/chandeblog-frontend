@@ -41,7 +41,7 @@ export default {
   // ENV config
   env: {
     apiUrl: process.env.apiUrl || 'http://localhost:8000',
-    highlightLang: highlightLang,
+    highlightLang,
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
