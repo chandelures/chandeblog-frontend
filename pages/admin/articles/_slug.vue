@@ -7,15 +7,20 @@
 <script>
 import AdminBar from '~/components/AdminBar.vue'
 export default {
-  name: 'AdminIndex',
+  name: 'AdminArticleDetail',
   components: { AdminBar },
   layout: 'admin',
   middleware: ['auth', 'auth-admin'],
   data() {
     return {
-      breadLinks: [{ text: '首页', to: '/admin' }],
+      breadLinks: [
+        { text: '首页', to: '/admin', exact: true },
+        { text: '文章', to: '/admin/articles', exact: true },
+        { text: '', to: '', exact: true },
+      ],
+      article: {},
+      categories: [],
     }
   },
-  methods: {},
 }
 </script>
