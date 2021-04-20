@@ -6,7 +6,7 @@
           <article-toc :toc-node="tocNode"></article-toc>
         </div>
       </v-col>
-      <v-col lg="6" md="8" sm="10" cols="12" class="mx-auto px-10">
+      <v-col lg="6" md="8" sm="10" cols="12" class="mx-auto">
         <v-responsive
           max-width="690"
           class="mx-auto my-lg-10 my-md-8 my-sm-6 my-4"
