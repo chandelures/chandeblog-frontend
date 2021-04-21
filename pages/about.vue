@@ -37,6 +37,7 @@ export default {
     ArticleDetail,
     ArticleToc,
   },
+  auth: false,
   async asyncData({ $axios, $marked }) {
     const data = await $axios.$get('about')
     if (data) data.content = $marked.markedExtend(data.content)

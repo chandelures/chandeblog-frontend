@@ -134,6 +134,11 @@ export default {
     duration: 2000,
   },
 
+  // Router config
+  router: {
+    middleware: ['auth'],
+  },
+
   // Auth config
   auth: {
     strategies: {

@@ -10,7 +10,7 @@ export default {
   name: 'AdminIndex',
   components: { AdminBar },
   layout: 'admin',
-  middleware: ['auth', 'auth-admin'],
+  middleware: ['auth-admin'],
   data() {
     return {
       breadLinks: [{ text: '首页', to: '/admin' }],

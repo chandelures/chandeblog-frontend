@@ -10,7 +10,7 @@ export default {
   name: 'AdminImages',
   components: { AdminBar },
   layout: 'admin',
-  middleware: ['auth', 'auth-admin'],
+  middleware: ['auth-admin'],
   data() {
     return {
       breadLinks: [

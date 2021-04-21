@@ -37,6 +37,7 @@ export default {
     ArticleDetail,
     ArticleToc,
   },
+  auth: false,
   async asyncData({ params, $axios, $marked }) {
     const data = await $axios.$get('articles/' + params.slug)
     if (data) {

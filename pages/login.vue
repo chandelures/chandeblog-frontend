@@ -29,7 +29,6 @@
 export default {
   name: 'Login',
   layout: 'empty',
-  middleware: ['auth'],
   auth: 'guest',
   data() {
     return {

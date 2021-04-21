@@ -36,6 +36,7 @@ import 'highlight.js/styles/default.css'
 export default {
   name: 'Index',
   components: {},
+  auth: false,
   async asyncData({ $axios, $marked }) {
     const data = await $axios.$get('articles', {
       params: {
