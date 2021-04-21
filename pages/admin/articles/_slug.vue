@@ -6,9 +6,6 @@
 </template>
 
 <script>
-import '~/assets/style/markdown.scss'
-import 'highlight.js/styles/default.css'
-
 import AdminBar from '~/components/AdminBar.vue'
 import AdminArticleUpdate from '~/components/AdminArticleUpdate.vue'
 

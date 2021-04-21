@@ -54,6 +54,9 @@
 </template>
 
 <script>
+import '~/assets/style/markdown.scss'
+import 'highlight.js/styles/default.css'
+
 export default {
   name: 'AdminArticleUpdate',
   props: {
@@ -103,7 +106,7 @@ export default {
       }
     },
     async createArticle() {
-      this.article = await this.$axios.$push('articles/create', this.article)
+      this.article = await this.$axios.$post('articles/create', this.article)
     },
     async formSubmit() {
       if (this.method === 'update') {
@@ -120,7 +123,7 @@ export default {
 .article-preview {
   border: 1px solid grey;
   border-radius: 3px;
-  max-height: 700px;
+  height: 700px;
   overflow: auto;
 }
 </style>
