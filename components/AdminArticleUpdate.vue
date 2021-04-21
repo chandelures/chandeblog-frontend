@@ -49,7 +49,10 @@
       dense
       style="max-width: 300px"
     ></v-select>
-    <v-btn class="green darken-3" type="submit" dark>保存</v-btn>
+    <v-btn color="green darken-3" type="submit" dark>保存</v-btn>
+    <v-btn color="error" v-if="method === 'update'" @click="deleteArticle"
+      >删除</v-btn
+    >
   </form>
 </template>
 
@@ -95,18 +98,33 @@ export default {
     },
     async updateArticle() {
       try {
-        this.data = await this.$axios.$put(
+        const data = await this.$axios.$put(
           `articles/${this.$route.params.slug}`,
           this.article
         )
         this.$toast.success('保存成功')
-        this.article = this.data
+        this.article = data
       } catch (err) {
         this.$toast.error('保存失败')
       }
     },
     async createArticle() {
-      this.article = await this.$axios.$post('articles/create', this.article)
+      try {
+        const data = await this.$axios.$post('articles/create', this.article)
+        this.$toast.success('创建成功')
+        this.$router.push(`/admin/articles/${data.slug}`)
+      } catch (err) {
+        this.$toast.error('创建失败')
+      }
+    },
+    async deleteArticle() {
+      try {
+        await this.$axios.$delete(`articles/${this.$route.params.slug}`)
+        this.$toast.success('删除成功')
+        this.$router.push('/admin/articles')
+      } catch (err) {
+        this.$toast.error('删除失败')
+      }
     },
     async formSubmit() {
       if (this.method === 'update') {
