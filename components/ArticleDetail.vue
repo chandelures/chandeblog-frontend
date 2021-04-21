@@ -5,7 +5,7 @@
       <v-avatar class="mr-3" size="35">
         <img alt="" :src="avatar" />
       </v-avatar>
-      <span class="green--text text--darken-3 mr-3">{{ author }}</span>
+      <span class="green--text text--darken-3 mr-3">{{ author_name }}</span>
       <span class="grey--text text--darken-2">{{ created | formatDate }}</span>
     </div>
     <!-- eslint-disable vue/no-v-html -->
@@ -30,7 +30,7 @@ export default {
       type: String,
       default: '',
     },
-    author: {
+    author_name: {
       type: String,
       default: '',
     },
