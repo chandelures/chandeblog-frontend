@@ -39,8 +39,8 @@
       </v-row>
     </v-container>
     <v-select
-      class="mb-4 mt-10"
       v-model="article.category"
+      class="mb-4 mt-10"
       :items="categories"
       item-text="name"
       item-value="id"
@@ -96,7 +96,6 @@ export default {
           `articles/${this.$route.params.slug}`,
           this.article
         )
-        console.log(this.article)
         this.$toast.success('保存成功')
         this.article = this.data
       } catch (err) {
