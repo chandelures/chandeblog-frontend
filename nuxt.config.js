@@ -166,7 +166,15 @@ export default {
     path: '/sitemap.xml',
     gzip: true,
     cacheTime: 1000 * 60 * 60 * 24,
-    exclude: ['/admin', '/login'],
+    exclude: [
+      '/admin',
+      '/admin/articles',
+      '/admin/articles/create',
+      '/admin/categories',
+      '/admin/images',
+      '/admin/users',
+      '/login',
+    ],
     routes: async () => {
       axios.defaults.baseURL = process.env.apiUrl
 
