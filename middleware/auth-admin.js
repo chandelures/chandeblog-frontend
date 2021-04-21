@@ -1,5 +1,5 @@
 export default function ({ $auth, redirect }) {
-  if (!$auth.user.is_admin) {
+  if (!$auth.user.isAdmin) {
     return redirect('/')
   }
 }

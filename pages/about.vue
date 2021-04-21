@@ -41,6 +41,7 @@ export default {
   async asyncData({ $axios, $marked }) {
     const data = await $axios.$get('about')
     if (data) data.content = $marked.markedExtend(data.content)
+    data.authorName = data.author_name
     return { article: data, tocNode: $marked.tocNode }
   },
   data() {

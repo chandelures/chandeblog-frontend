@@ -50,7 +50,7 @@
       style="max-width: 300px"
     ></v-select>
     <v-btn color="green darken-3" type="submit" dark>保存</v-btn>
-    <v-btn color="error" v-if="method === 'update'" @click="deleteArticle"
+    <v-btn v-if="method === 'update'" color="error" @click="deleteArticle"
       >删除</v-btn
     >
   </form>
@@ -72,7 +72,7 @@ export default {
     return {
       article: { title: '', abstract: '', content: '', category: null },
       modify: false,
-      categories: [],
+      categories: [{ name: '无', id: null }],
     }
   },
   computed: {
@@ -84,7 +84,7 @@ export default {
     if (this.method === 'update') {
       await this.getArticle()
     }
-    await this.getCategories()
+    await this.getCategories('categories')
   },
   methods: {
     async getArticle() {
@@ -92,9 +92,12 @@ export default {
         `articles/${this.$route.params.slug}`
       )
     },
-    async getCategories() {
-      this.categories = await this.$axios.$get('categories')
-      this.categories.push({ name: '无', id: null })
+    async getCategories(url) {
+      const data = await this.$axios.$get(url)
+      this.categories = this.categories.concat(data.results)
+      if (data.next) {
+        this.getCategories(url)
+      }
     },
     async updateArticle() {
       try {
