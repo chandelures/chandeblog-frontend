@@ -6,6 +6,6 @@
 export default {
   name: 'AdminArticlesCreate',
   layout: 'admin',
-  middleware: ['auth', 'auth-admin'],
+  middleware: ['auth-admin'],
 }
 </script>

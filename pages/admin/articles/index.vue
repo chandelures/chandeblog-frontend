@@ -1,6 +1,15 @@
 <template>
   <div>
     <admin-bar :bread-links="breadLinks"></admin-bar>
+    <div class="d-flex justify-space-between my-3 mx-4">
+      <div class="text-h5">所有文章</div>
+      <nuxt-link
+        class="text-decoration-none green--text text--darken-3 text-caption"
+        to="/admin/articles/create"
+      >
+        创建文章
+      </nuxt-link>
+    </div>
     <v-simple-table>
       <thead>
         <tr>
@@ -37,7 +46,7 @@ export default {
   name: 'AdminArticles',
   components: { AdminBar },
   layout: 'admin',
-  middleware: ['auth', 'auth-admin'],
+  middleware: ['auth-admin'],
   data() {
     return {
       breadLinks: [
