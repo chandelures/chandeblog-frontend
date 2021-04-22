@@ -158,6 +158,11 @@ export default {
         },
       },
     },
+    cookie: {
+      options: {
+        maxAge: 60 * 60 * 24 * 7,
+      },
+    },
     localStorage: false,
   },
 
