@@ -28,6 +28,7 @@
 <script>
 import '~/assets/style/markdown.scss'
 import 'highlight.js/styles/default.css'
+import 'katex/dist/katex.css'
 import ArticleDetail from '~/components/ArticleDetail.vue'
 import ArticleToc from '~/components/ArticleToc.vue'
 
