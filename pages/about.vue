@@ -26,9 +26,6 @@
 </template>
 
 <script>
-import '~/assets/style/markdown.scss'
-import 'highlight.js/styles/default.css'
-import 'katex/dist/katex.css'
 import ArticleDetail from '~/components/ArticleDetail.vue'
 import ArticleToc from '~/components/ArticleToc.vue'
 
@@ -41,7 +38,7 @@ export default {
   auth: false,
   async asyncData({ $axios, $marked }) {
     const data = await $axios.$get('about')
-    if (data) data.content = $marked.markedExtend(data.content)
+    if (data) data.content = $marked.marked(data.content)
     data.authorName = data.author_name
     return { article: data, tocNode: $marked.tocNode }
   },

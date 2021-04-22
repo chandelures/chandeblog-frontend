@@ -29,50 +29,45 @@ const renderer = {
       })
     return '<h' + level + ' id="' + anchor + '">' + text + '</h' + level + '>\n'
   },
-  paragraph(text) {
-    const texMatch = text.match(/^\$\$([\s\S]+?)\$\$$/m)
-    const inlineTexMatch = text.match(/\$([\s\S]+?)\$/)
-
-    if (inlineTexMatch) {
-      if (!texMatch) {
-        return (
-          '<p>' +
-          text.replace(
-            inlineTexMatch[0],
-            katex.renderToString(
-              inlineTexMatch[1].trim(),
-              {
-                throwOnError: false,
-                displayMode: false,
-                strict: false,
-              } + '</p>'
-            )
-          )
-        )
-      } else if (texMatch) {
-        return (
-          '<p>' +
-          katex.renderToString(texMatch[1].trim(), {
-            throwOnError: false,
-            displayMode: true,
-            strict: false,
-          }) +
-          '</p>'
-        )
-      }
-    }
-    return false
-  },
 }
 
 const tokenizer = {
   paragraph(src) {
     const match = src.match(/^\$\$([\s\S]+?)\$\$/)
+
     if (match) {
       return {
         type: 'paragraph',
         raw: match[0],
-        text: match[0],
+        text: katex.renderToString(match[1].replace(/\$/g, ''), {
+          throwOnError: false,
+          displayMode: true,
+          strict: false,
+        }),
+      }
+    }
+
+    return false
+  },
+  inlineText(src) {
+    const match = src.match(/\$([\s\S]+?)\$/g)
+
+    if (match) {
+      let text = src
+      match.forEach((item) => {
+        text = text.replace(
+          item,
+          katex.renderToString(item.replace(/\$/g, ''), {
+            throwOnError: false,
+            displayMode: false,
+            strict: false,
+          })
+        )
+      })
+      return {
+        type: 'text',
+        raw: src,
+        text,
       }
     }
     return false
@@ -87,10 +82,6 @@ const highlight = (code, lang) => {
 marked.use({ renderer, tokenizer, highlight })
 
 _marked.marked = (markdownString) => {
-  return marked(markdownString)
-}
-
-_marked.markedExtend = (markdownString) => {
   _marked.tocNode = []
   return marked(markdownString)
 }

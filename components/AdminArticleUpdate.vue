@@ -78,7 +78,7 @@ export default {
   },
   computed: {
     markdownContent() {
-      return this.$marked.markedExtend(this.article.content)
+      return this.$marked.marked(this.article.content)
     },
   },
   async mounted() {

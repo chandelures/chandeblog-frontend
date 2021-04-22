@@ -23,6 +23,10 @@
 </template>
 
 <script>
+import '~/assets/style/markdown.scss'
+import 'highlight.js/styles/default.css'
+import 'katex/dist/katex.css'
+
 export default {
   name: 'ArticleListItem',
   props: {
