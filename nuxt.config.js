@@ -92,19 +92,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: process.env.apiUrl,
-    proxy: true,
-    prefix: '/api',
-    credentials: true,
-  },
-
-  proxy: {
-    '/api': {
-      target: process.env.apiUrl,
-      pathRewrite: {
-        '^/api': '/',
-        changeOrigin: true,
-      },
-    },
+    credentials: false,
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
