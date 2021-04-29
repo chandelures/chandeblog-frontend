@@ -7,12 +7,7 @@
         </div>
       </v-col>
       <v-col lg="6" md="8" sm="10" cols="12" class="mx-auto">
-        <v-responsive
-          max-width="690"
-          class="mx-auto my-lg-10 my-md-8 my-sm-6 my-4"
-        >
-          <article-detail v-bind="article"></article-detail>
-        </v-responsive>
+        <article-detail v-bind="article"></article-detail>
       </v-col>
       <v-col
         lg="3"
@@ -38,8 +33,11 @@ export default {
   auth: false,
   async asyncData({ $axios, $marked }) {
     const data = await $axios.$get('about')
-    if (data) data.content = $marked.marked(data.content)
+    if (data) {
+      data.content = $marked.marked(data.content)
+    }
     data.authorName = data.author_name
+    data.previous = data.next = null
     return { article: data, tocNode: $marked.tocNode }
   },
   data() {
@@ -55,14 +53,20 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content:
-            this.article.content
-              .replace(/<[^>]+>/g, '')
-              .replace(/[\r\n]/g, '')
-              .slice(0, 100) + '...',
+          content: this.getDescription(),
         },
       ],
     }
+  },
+  methods: {
+    getDescription() {
+      return (
+        this.article.content
+          .replace(/<[^>]+>/g, '')
+          .replace(/[\r\n]/g, '')
+          .slice(0, 100) + '...'
+      )
+    },
   },
 }
 </script>

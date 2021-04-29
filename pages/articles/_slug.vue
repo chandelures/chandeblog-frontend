@@ -51,14 +51,20 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content:
-            this.article.content
-              .replace(/<[^>]+>/g, '')
-              .replace(/[\r\n]/g, '')
-              .slice(0, 100) + '...',
+          content: this.getDescription(),
         },
       ],
     }
+  },
+  methods: {
+    getDescription() {
+      return (
+        this.article.content
+          .replace(/<[^>]+>/g, '')
+          .replace(/[\r\n]/g, '')
+          .slice(0, 100) + '...'
+      )
+    },
   },
 }
 </script>
