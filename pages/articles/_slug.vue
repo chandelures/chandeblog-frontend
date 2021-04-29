@@ -7,30 +7,7 @@
         </div>
       </v-col>
       <v-col lg="6" md="8" sm="10" cols="12" class="mx-auto">
-        <v-responsive
-          max-width="690"
-          class="mx-auto my-lg-10 my-md-8 my-sm-6 my-4"
-        >
-          <article-detail v-bind="article"></article-detail>
-          <v-divider class="mt-10 mb-4"></v-divider>
-          <div class="d-flex">
-            <nuxt-link
-              v-if="article.previous"
-              class="text-decoration-none green--text text--darken-3"
-              :to="`/articles/${article.previous}`"
-            >
-              &lt; 上一篇
-            </nuxt-link>
-            <v-spacer></v-spacer>
-            <nuxt-link
-              v-if="article.next"
-              class="text-decoration-none green--text text--darken-3"
-              :to="`/articles/${article.next}`"
-            >
-              下一篇 &gt;
-            </nuxt-link>
-          </div>
-        </v-responsive>
+        <article-detail v-bind="article"></article-detail>
       </v-col>
       <v-col
         lg="3"
