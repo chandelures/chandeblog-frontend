@@ -17,7 +17,8 @@
     <router-link
       :to="'/articles/' + slug"
       class="text-body-2 green--text text--darken-3 text-decoration-none"
-      >Read more
+    >
+      <p>Read more &gt;</p>
     </router-link>
   </section>
 </template>
