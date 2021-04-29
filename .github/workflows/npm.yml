@@ -2,11 +2,7 @@
 
 name: Npm
 
-on:
-  push:
-    branches: [master, dev]
-  pull_request:
-    branches: [master]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -20,10 +16,9 @@ jobs:
         with:
           node-version: 14.x
 
-      - name: install dependencies and build
+      - name: install dependencies
         run: |
           npm install
-          npm run build
 
       - name: run lint with eslint
         run: |
