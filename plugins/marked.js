@@ -1,13 +1,6 @@
 import marked from 'marked'
-import hljs from 'highlight.js/lib/core'
+import hljs from 'highlight.js'
 import katex from 'katex'
-
-const languages = process.env.highlightLang
-
-languages.forEach((langName) => {
-  const langModule = require(`highlight.js/lib/languages/${langName}`)
-  hljs.registerLanguage(langName, langModule)
-})
 
 const _marked = {}
 
@@ -75,8 +68,7 @@ const tokenizer = {
 }
 
 const highlight = (code, lang) => {
-  const language = hljs.getLanguage(lang) ? lang : 'plaintext'
-  return hljs.highlight(code, { language }).value
+  return hljs.highlightAuto(code).value
 }
 
 marked.use({ renderer, tokenizer, highlight })

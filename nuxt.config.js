@@ -1,47 +1,9 @@
 import axios from 'axios'
-import webpack from 'webpack'
-
-const highlightLang = [
-  'bash',
-  'c',
-  'csharp',
-  'cpp',
-  'css',
-  'go',
-  'xml',
-  'http',
-  'json',
-  'java',
-  'javascript',
-  'kotlin',
-  'less',
-  'lua',
-  'makefile',
-  'markdown',
-  'nginx',
-  'objectivec',
-  'php',
-  'perl',
-  'plaintext',
-  'python',
-  'python-repl',
-  'r',
-  'ruby',
-  'rust',
-  'scss',
-  'sql',
-  'shell',
-  'swift',
-  'typescript',
-  'vbnet',
-  'yaml',
-]
 
 export default {
   // ENV config
   env: {
     apiUrl: process.env.apiUrl || 'http://localhost:8000',
-    highlightLang,
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -56,7 +18,26 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/styles/default.min.css',
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://cdn.jsdelivr.net/npm/katex@0.13.3/dist/katex.min.css',
+      },
+    ],
+    script: [
+      { src: 'https://cdn.jsdelivr.net/npm/marked@2.0.3/marked.min.js' },
+      { src: 'https://cdn.jsdelivr.net/npm/katex@0.13.3/dist/katex.min.js' },
+      {
+        src:
+          'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/highlight.min.js',
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -103,12 +84,15 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    plugins: [
-      new webpack.ContextReplacementPlugin(
-        /highlight\.js\/lib\/languages$/,
-        new RegExp(`^./(${highlightLang.join('|')})$`)
-      ),
-    ],
+    extend(config, { isDev, isClient }) {
+      if (isClient) {
+        config.externals = {
+          marked: 'marked',
+          'highlight.js': 'hljs',
+          katex: 'katex',
+        }
+      }
+    },
   },
 
   // Loading config
