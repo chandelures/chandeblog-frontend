@@ -27,19 +27,29 @@ export default {
       {
         rel: 'stylesheet',
         href:
-          'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/styles/default.min.css',
+          'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/styles/default.min.css',
       },
       {
         rel: 'stylesheet',
-        href: 'https://cdn.jsdelivr.net/npm/katex@0.13.3/dist/katex.min.css',
+        href: 'https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css',
       },
     ],
     script: [
-      { src: 'https://cdn.jsdelivr.net/npm/marked@2.0.3/marked.min.js' },
-      { src: 'https://cdn.jsdelivr.net/npm/katex@0.13.3/dist/katex.min.js' },
       {
+        hid: 'marked',
+        src: 'https://cdn.jsdelivr.net/npm/marked@latest/marked.min.js',
+        defer: true,
+      },
+      {
+        hid: 'katex',
+        src: 'https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js',
+        defer: true,
+      },
+      {
+        hid: 'highlightjs',
         src:
-          'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/highlight.min.js',
+          'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js',
+        defer: true,
       },
     ],
   },
@@ -96,9 +106,6 @@ export default {
           katex: 'katex',
         }
       }
-    },
-    optimization: {
-      splitChunks: {},
     },
   },
 
