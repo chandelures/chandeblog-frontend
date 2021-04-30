@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-row>
       <v-col lg="3" md="2" sm="1" cols="0" class="d-none d-lg-flex pr-4">
-        <div class="sidebar my-lg-10 my-md-8 my-sm-6 my-4">
+        <div class="sidebar my-10">
           <article-toc :toc-node="tocNode"></article-toc>
         </div>
       </v-col>

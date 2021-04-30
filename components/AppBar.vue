@@ -1,15 +1,8 @@
 <template>
   <v-app-bar color="green darken-3" dark min-height="65">
-    <v-container class="fill-height">
+    <v-container class="fill-height" fluid>
       <v-row>
-        <v-col
-          lg="8"
-          offset-lg="2"
-          md="10"
-          offset-md="1"
-          cols="12"
-          class="d-flex"
-        >
+        <v-col md="8" cols="12" class="d-flex mx-auto">
           <nuxt-link class="my-auto mx-auto mr-lg-4 mr-md-2" to="/">
             <v-img alt="CBLOG" src="../img/logo.png" width="100" contain>
             </v-img>
