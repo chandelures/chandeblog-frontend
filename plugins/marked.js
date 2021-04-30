@@ -13,7 +13,8 @@ const renderer = {
   heading(text, level, raw) {
     const anchor =
       this.options.headerPrefix +
-      raw.toLowerCase().replace(/[^\w\\u4e00-\\u9fa5]]+/g, '-')
+      raw.toLowerCase().replace(/[^\w\u4E00-\u9FA5]+/g, '-')
+    text = text.replace(/<[^>]+>/g, '')
     if (level >= minLevel && level <= maxLevel)
       _marked.tocNode.push({
         anchor,

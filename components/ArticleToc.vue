@@ -1,8 +1,14 @@
 <template>
   <div class="article-toc">
-    <!-- eslint-disable vue/no-v-html -->
-    <div v-html="buildToc"></div>
-    <!--eslint-enable-->
+    <ul>
+      <li v-for="(item, index) in tocNode" :key="index">
+        <nuxt-link
+          class="anchor"
+          :to="`#${encodeURI(item.anchor)}`"
+          v-text="item.text"
+        ></nuxt-link>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -17,46 +23,10 @@ export default {
   },
   data() {
     return {
-      pos: '',
+      pos: null,
       anchors: [],
+      anchorElements: [],
     }
-  },
-  computed: {
-    buildToc() {
-      const levelStack = []
-      let result = ''
-      const addStartUl = () => {
-        result += '<ul>\n'
-      }
-      const addEndUl = () => {
-        result += '</ul>\n'
-      }
-      const addLi = (anchor, text) => {
-        result +=
-          '<li><a href="#' + anchor + '" class="anchor">' + text + '</a></li>\n'
-      }
-      this.tocNode.forEach((item) => {
-        let levelIndex = levelStack.indexOf(item.level)
-        if (levelIndex === -1) {
-          levelStack.unshift(item.level)
-          addStartUl()
-          addLi(item.anchor, item.text)
-        } else if (levelIndex === 0) {
-          addLi(item.anchor, item.text)
-        } else {
-          while (levelIndex--) {
-            levelStack.shift()
-            addEndUl()
-          }
-          addLi(item.anchor, item.text)
-        }
-      })
-      while (levelStack.length) {
-        levelStack.shift()
-        addEndUl()
-      }
-      return result
-    },
   },
   watch: {
     pos(newPos, oldPos) {
@@ -65,6 +35,7 @@ export default {
     },
   },
   mounted() {
+    this.getAnchorElements()
     this.getAnchors()
     window.addEventListener('scroll', this.handleScroll)
   },
@@ -85,7 +56,7 @@ export default {
 
         if (index === this.anchors.length - 1) {
           if (scrollTop > elementOffset) {
-            this.pos = this.anchors[index]
+            this.pos = this.anchorElements[index]
           }
         } else {
           const nextElementOffset = document.querySelector(
@@ -93,34 +64,34 @@ export default {
           ).offsetTop
 
           if (scrollTop > elementOffset && scrollTop < nextElementOffset) {
-            this.pos = this.anchors[index]
+            this.pos = this.anchorElements[index]
             break
           }
         }
       }
     },
+    getAnchorElements() {
+      const _anchorElements = this.$el.querySelectorAll('a.anchor')
+      this.anchorElements = _anchorElements
+      if (this.anchorElements.length !== 0) this.pos = this.anchorElements[0]
+    },
     getAnchors() {
       const _anchors = []
-      this.$el.querySelectorAll('a.anchor').forEach((item) => {
-        item.onclick = function (event) {
-          event.preventDefault()
-          const element = document.querySelector(
-            '[id="' + item.getAttribute('href').replace('#', '') + '"]'
-          )
-          element.scrollIntoView({ behavior: 'smooth' })
-        }
-        _anchors.push(item.getAttribute('href'))
+      this.anchorElements.forEach((item) => {
+        const href = decodeURI(item.getAttribute('href'))
+        _anchors.push(href.slice(href.indexOf('#')))
       })
       this.anchors = _anchors
-      if (this.anchors.length !== 0) this.pos = this.anchors[0]
     },
     activeAnchor(pos) {
-      const Anchor = this.$el.querySelector('[href="' + pos + '"]')
-      if (Anchor) Anchor.parentNode.classList.add('active')
+      if (pos) {
+        pos.parentNode.classList.add('active')
+      }
     },
     deactiveAnchor(pos) {
-      const Anchor = this.$el.querySelector('[href="' + pos + '"]')
-      if (Anchor) Anchor.parentNode.classList.remove('active')
+      if (pos) {
+        pos.parentNode.classList.remove('active')
+      }
     },
   },
 }
