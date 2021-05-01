@@ -82,6 +82,7 @@ export default {
     '@nuxtjs/auth-next',
     '@nuxtjs/toast',
     '@nuxtjs/sitemap',
+    '@nuxtjs/feed',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -208,5 +209,42 @@ export default {
 
       return baseRoutes.concat(articlesRoutes)
     },
+  },
+
+  // Feed config
+  feed: async () => {
+    axios.defaults.baseURL = process.env.apiUrl
+    let articles = []
+    const getArticles = async (url) => {
+      const { data } = await axios.get(url)
+      articles = articles.concat(data.results)
+      if (data.next) {
+        await getArticles(data.next)
+      }
+    }
+    await getArticles('articles')
+
+    return {
+      path: 'feed.xml',
+      async create(feed) {
+        feed.options = {
+          title: 'Chandelure Blog - Clog',
+          link: `${process.env.baseURL}/feed.xml`,
+          description: 'All posts in Chandelure Blog',
+        }
+
+        articles.forEach((article) => {
+          feed.addItem({
+            title: article.title,
+            id: article.id,
+            link: `${process.env.baseURL}/articles/${article.slug}`,
+            description:
+              article.abstract.replace(/[\r\n]/g, '').slice(0, 100) + '...',
+          })
+        })
+      },
+      cacheTime: 1000 * 60 * 15,
+      type: 'rss2',
+    }
   },
 }
