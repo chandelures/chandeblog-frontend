@@ -83,6 +83,7 @@ export default {
     '@nuxtjs/toast',
     '@nuxtjs/sitemap',
     '@nuxtjs/feed',
+    '@nuxtjs/robots',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -248,5 +249,12 @@ export default {
       cacheTime: 1000 * 60 * 15,
       type: 'rss2',
     }
+  },
+
+  // Robots config
+  robots: {
+    UserAgent: '*',
+    Disallow: '/admin',
+    Sitemap: '/sitemap.xml',
   },
 }
