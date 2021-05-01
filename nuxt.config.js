@@ -216,11 +216,13 @@ export default {
     axios.defaults.baseURL = process.env.apiUrl
     let articles = []
     const getArticles = async (url) => {
-      const { data } = await axios.get(url)
-      articles = articles.concat(data.results)
-      if (data.next) {
-        await getArticles(data.next)
-      }
+      try {
+        const { data } = await axios.get(url)
+        articles = articles.concat(data.results)
+        if (data.next) {
+          await getArticles(data.next)
+        }
+      } catch (err) {}
     }
     await getArticles('articles')
 
