@@ -226,7 +226,7 @@ export default {
 
     return {
       path: 'feed.xml',
-      async create(feed) {
+      create(feed) {
         feed.options = {
           title: 'Chandelure Blog - Clog',
           link: `${process.env.baseURL}/feed.xml`,
