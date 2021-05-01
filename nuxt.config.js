@@ -141,7 +141,7 @@ export default {
         endpoints: {
           login: { url: '/auth/token/login', method: 'post' },
           logout: { url: '/auth/token/logout', method: 'post' },
-          user: { url: '/user/profile', method: 'get' },
+          user: { url: '/auth/users/profile', method: 'get' },
         },
       },
     },
