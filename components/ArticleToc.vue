@@ -3,8 +3,8 @@
     <ul>
       <li v-for="(item, index) in tocNode" :key="index">
         <nuxt-link
-          class="anchor"
-          :to="`#${encodeURI(item.anchor)}`"
+          :class="`anchor ${item.level === 3 ? 'pl-2' : ''}`"
+          :to="`#${item.anchor}`"
           v-text="item.text"
         ></nuxt-link>
       </li>
@@ -103,8 +103,7 @@ export default {
 .article-toc {
   position: sticky;
   top: 30px;
-  float: right;
-  max-width: 175px;
+  max-width: 220px;
 
   ul:first-child > li:first-child {
     padding-top: 0;
@@ -117,9 +116,9 @@ export default {
 
   ul > li {
     list-style: none;
-    padding: 5px 10px;
+    padding: 5px 20px;
     font-size: 13px;
-    border-right: 2px solid #{map-get($grey, 'lighten-2')};
+    border-left: 2px solid #{map-get($grey, 'lighten-2')};
     width: 100%;
     display: inline-block;
   }
@@ -130,7 +129,7 @@ export default {
   }
 
   li.active {
-    border-right: 2px solid #{map-get($green, 'darken-3')};
+    border-left: 2px solid #{map-get($green, 'darken-3')};
 
     a {
       color: #{map-get($green, 'darken-3')};

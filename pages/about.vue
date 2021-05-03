@@ -2,20 +2,15 @@
   <v-container fluid>
     <v-row>
       <v-col lg="3" md="2" sm="1" cols="0" class="d-none d-lg-flex pr-4">
-        <div class="sidebar my-lg-10 my-md-8 my-sm-6 my-4">
-          <article-toc :toc-node="tocNode"></article-toc>
-        </div>
       </v-col>
       <v-col lg="6" md="8" sm="10" cols="12" class="mx-auto">
         <article-detail v-bind="article"></article-detail>
       </v-col>
-      <v-col
-        lg="3"
-        md="2"
-        sm="1"
-        cols="0"
-        class="d-none d-lg-flex px-0"
-      ></v-col>
+      <v-col lg="3" md="2" sm="1" cols="0" class="d-none d-lg-flex px-0">
+        <div class="sidebar my-lg-10 my-md-8 my-sm-6 my-4">
+          <article-toc :toc-node="tocNode"></article-toc>
+        </div>
+      </v-col>
     </v-row>
   </v-container>
 </template>
