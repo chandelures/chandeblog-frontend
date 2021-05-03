@@ -1,7 +1,7 @@
 <template>
   <div class="d-none d-lg-flex">
     <v-fade-transition>
-      <v-btn @click="backTop" v-show="show" color="green darken-3" dark fab>
+      <v-btn v-show="show" color="green darken-3" dark fab @click="backTop">
         <v-icon dark> mdi-arrow-up-thick </v-icon>
       </v-btn>
     </v-fade-transition>
