@@ -22,7 +22,7 @@
     "highlight.js": "^10.7.2",
     "katex": "^0.13.9",
     "marked": "^2.0.3",
-    "nuxt": "^2.15.4"
+    "nuxt": "^2.15.5"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^6.0.0",
