@@ -24,6 +24,36 @@
               {{ link.text }}
             </v-btn>
             <v-spacer class="d-none d-md-flex"> </v-spacer>
+            <v-btn
+              @click="logout"
+              v-if="$auth.loggedIn"
+              class="d-none d-md-flex my-auto"
+              :ripple="false"
+              text
+              plain
+            >
+              Log out
+            </v-btn>
+            <v-btn
+              v-if="!$auth.loggedIn"
+              to="/login"
+              class="d-none d-md-flex my-auto"
+              :ripple="false"
+              text
+              plain
+            >
+              Log in
+            </v-btn>
+            <v-btn
+              v-if="!$auth.loggedIn"
+              to="/signup"
+              class="d-none d-md-flex my-auto"
+              :ripple="false"
+              text
+              plain
+            >
+              Sign up
+            </v-btn>
             <v-btn class="d-md-none" fab color="transparent" disabled plain>
             </v-btn>
           </v-col>
@@ -39,6 +69,15 @@
             :to="item.to"
           >
             <v-list-item-title v-text="item.text"></v-list-item-title>
+          </v-list-item>
+          <v-list-item v-if="$auth.loggedIn" @click="logout">
+            <v-list-item-title>Log out</v-list-item-title>
+          </v-list-item>
+          <v-list-item v-if="!$auth.loggedIn" to="/login">
+            <v-list-item-title>Log in</v-list-item-title>
+          </v-list-item>
+          <v-list-item v-if="!$auth.loggedIn" to="/signup">
+            <v-list-item-title>Sign up</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -62,6 +101,13 @@ export default {
   watch: {
     group() {
       this.drawer = false
+    },
+  },
+  methods: {
+    async logout() {
+      await this.$auth.logout()
+      this.$toast.success('注销成功')
+      this.$router.go(0)
     },
   },
 }
