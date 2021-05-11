@@ -25,12 +25,12 @@
             </v-btn>
             <v-spacer class="d-none d-md-flex"> </v-spacer>
             <v-btn
-              @click="logout"
               v-if="$auth.loggedIn"
               class="d-none d-md-flex my-auto"
               :ripple="false"
               text
               plain
+              @click="logout"
             >
               Log out
             </v-btn>
