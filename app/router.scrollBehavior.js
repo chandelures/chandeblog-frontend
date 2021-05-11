@@ -5,7 +5,9 @@ export default function (to, from, savedPosition) {
 
   if (to.hash) {
     scrollTo = decodeURI(to.hash)
-    return goTo(scrollTo)
+    if (document.querySelector(scrollTo)) {
+      return goTo(scrollTo)
+    }
   } else if (savedPosition) {
     return savedPosition
   }
