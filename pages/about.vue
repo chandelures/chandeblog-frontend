@@ -7,7 +7,7 @@
         <article-detail v-bind="article"></article-detail>
       </v-col>
       <v-col lg="3" md="2" sm="1" cols="0" class="d-none d-lg-flex px-0">
-        <div class="sidebar my-lg-10 my-md-8 my-sm-6 my-4">
+        <div class="sidebar my-10 pl-2">
           <article-toc :toc-node="tocNode"></article-toc>
         </div>
       </v-col>
