@@ -21,7 +21,7 @@
     "core-js": "^3.17.3",
     "highlight.js": "^11.2.0",
     "katex": "^0.13.18",
-    "marked": "^3.0.3",
+    "marked": "^3.0.4",
     "nuxt": "^2.15.8"
   },
   "devDependencies": {
