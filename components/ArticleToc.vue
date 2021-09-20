@@ -24,7 +24,7 @@ export default {
   data() {
     return {
       pos: null,
-      anchors: [],
+      hrefs: [],
       anchorElements: [],
     }
   },
@@ -35,8 +35,8 @@ export default {
     },
   },
   mounted() {
-    this.getAnchorElements()
     this.getAnchors()
+    this.getHrefs()
     window.addEventListener('scroll', this.handleScroll)
   },
   destroyed() {
@@ -49,39 +49,40 @@ export default {
         document.documentElement.scrollTop ||
         document.body.scrollTop
 
-      for (let index = 0; index < this.anchors.length; index++) {
+      for (let index = 0; index < this.hrefs.length; index++) {
         const elementOffset = document.querySelector(
-          '[id="' + this.anchors[index].replace('#', '') + '"]'
+          this.hrefs[index]
         ).offsetTop
 
-        if (index === this.anchors.length - 1) {
+        if (index === this.hrefs.length - 1) {
           if (scrollTop > elementOffset) {
             this.pos = this.anchorElements[index]
           }
-        } else {
-          const nextElementOffset = document.querySelector(
-            '[id="' + this.anchors[index + 1].replace('#', '') + '"]'
-          ).offsetTop
+          break
+        }
 
-          if (scrollTop > elementOffset && scrollTop < nextElementOffset) {
-            this.pos = this.anchorElements[index]
-            break
-          }
+        const nextElementOffset = document.querySelector(
+          this.hrefs[index + 1]
+        ).offsetTop
+
+        if (scrollTop > elementOffset && scrollTop < nextElementOffset) {
+          this.pos = this.anchorElements[index]
+          break
         }
       }
     },
-    getAnchorElements() {
+    getAnchors() {
       const _anchorElements = this.$el.querySelectorAll('a.anchor')
       this.anchorElements = _anchorElements
       if (this.anchorElements.length !== 0) this.pos = this.anchorElements[0]
     },
-    getAnchors() {
-      const _anchors = []
+    getHrefs() {
+      const _hrefs = []
       this.anchorElements.forEach((item) => {
         const href = decodeURI(item.getAttribute('href'))
-        _anchors.push(href.slice(href.indexOf('#')))
+        _hrefs.push(href.slice(href.indexOf('#')))
       })
-      this.anchors = _anchors
+      this.hrefs = _hrefs
     },
     activeAnchor(pos) {
       if (pos) {
