@@ -5,7 +5,7 @@
     </span>
     <h1 class="text-h4 font-weight-black my-4">
       <nuxt-link
-        class="black--text text-decoration-none"
+        class="text-decoration-none markdown-title"
         :to="'/articles/' + slug"
         v-text="title"
       >
