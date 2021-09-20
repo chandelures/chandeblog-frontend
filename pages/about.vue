@@ -31,7 +31,6 @@ export default {
     if (data) {
       data.content = $marked.marked(data.content)
     }
-    data.authorName = data.author_name
     data.previous = data.next = null
     return { article: data, tocNode: $marked.tocNode }
   },
