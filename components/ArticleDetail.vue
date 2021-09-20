@@ -3,7 +3,7 @@
     <section v-if="content">
       <h1 class="text-h4 text-md-h3 font-weight-black" v-text="title"></h1>
       <div class="text-body-2 my-4 my-md-6">
-        <v-avatar class="mr-3" size="35">
+        <v-avatar class="mr-3" size="50">
           <img alt="" :src="avatar" />
         </v-avatar>
         <span class="green--text text--darken-3 mr-3">{{ authorName }}</span>
