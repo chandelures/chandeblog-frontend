@@ -1,0 +1,52 @@
+@import '~vuetify/src/styles/styles.sass';
+
+.sidebar {
+  position: relative;
+  width: 100%;
+
+  @media #{map-get($display-breakpoints, 'llg-and-down')} {
+    padding-left: 5% !important;
+  }
+
+  @media #{map-get($display-breakpoints, 'lg-and-down')} {
+    padding-left: 15% !important;
+  }
+}
+
+.article-toc {
+  position: sticky;
+  top: 30px;
+  max-width: 220px;
+
+  ul:first-child > li:first-child {
+    padding-top: 0;
+  }
+
+  ul {
+    padding-left: 0;
+    font-size: 0;
+  }
+
+  ul > li {
+    list-style: none;
+    padding: 5px 20px;
+    font-size: 13px;
+    border-left: 2px solid #{map-get($grey, 'lighten-2')};
+    width: 100%;
+    display: inline-block;
+  }
+
+  a {
+    color: #{map-get($grey, 'darken-1')};
+    text-decoration: none;
+  }
+
+  li.active {
+    border-left: 2px solid #{map-get($green, 'darken-3')};
+
+    a {
+      color: #{map-get($green, 'darken-3')};
+      font-weight: bold;
+    }
+  }
+}

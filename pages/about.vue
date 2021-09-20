@@ -7,7 +7,7 @@
         <article-detail v-bind="article"></article-detail>
       </v-col>
       <v-col lg="3" md="2" sm="1" cols="0" class="d-none d-lg-flex px-0">
-        <div class="sidebar my-10 pl-2">
+        <div class="sidebar my-10">
           <article-toc :toc-node="tocNode"></article-toc>
         </div>
       </v-col>
@@ -18,6 +18,9 @@
 <script>
 import ArticleDetail from '~/components/ArticleDetail.vue'
 import ArticleToc from '~/components/ArticleToc.vue'
+
+import '~/assets/style/markdown.scss'
+import '~/assets/style/sidebar.scss'
 
 export default {
   name: 'About',

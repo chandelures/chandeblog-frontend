@@ -19,6 +19,9 @@
 import ArticleDetail from '~/components/ArticleDetail.vue'
 import ArticleToc from '~/components/ArticleToc.vue'
 
+import '~/assets/style/markdown.scss'
+import '~/assets/style/sidebar.scss'
+
 export default {
   name: 'Article',
   components: {
@@ -63,19 +66,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-@import '~vuetify/src/styles/styles.sass';
-.sidebar {
-  position: relative;
-  width: 100%;
-
-  @media #{map-get($display-breakpoints, 'llg-and-down')} {
-    padding-left: 5% !important;
-  }
-
-  @media #{map-get($display-breakpoints, 'lg-and-down')} {
-    padding-left: 15% !important;
-  }
-}
-</style>

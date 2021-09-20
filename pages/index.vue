@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import '~/assets/style/markdown.scss'
+
 export default {
   name: 'Index',
   components: {},
