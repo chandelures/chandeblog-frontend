@@ -7,7 +7,7 @@
         <article-detail v-bind="article"></article-detail>
       </v-col>
       <v-col lg="3" md="2" sm="1" cols="0" class="d-none d-lg-flex px-0">
-        <div class="sidebar my-10 pl-2">
+        <div class="sidebar my-10">
           <article-toc :toc-node="tocNode"></article-toc>
         </div>
       </v-col>
@@ -64,9 +64,18 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '~vuetify/src/styles/styles.sass';
 .sidebar {
   position: relative;
   width: 100%;
+
+  @media #{map-get($display-breakpoints, 'llg-and-down')} {
+    padding-left: 5% !important;
+  }
+
+  @media #{map-get($display-breakpoints, 'lg-and-down')} {
+    padding-left: 15% !important;
+  }
 }
 </style>

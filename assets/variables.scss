@@ -4,3 +4,15 @@
 // $font-size-root: 20px;
 
 $font-size-root: 17px;
+
+$grid-breakpoints: (
+  'llg': 1600px,
+  'xl': 1920px - 16px,
+);
+
+$display-breakpoints: (
+  'lg-and-down':
+    'only screen and(max-width: #{map-get($grid-breakpoints, "llg") - 1})',
+  'llg-and-down':
+    'only screen and(max-width: #{map-get($grid-breakpoints, "xl") - 1})',
+);
