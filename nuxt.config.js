@@ -157,15 +157,7 @@ export default {
     path: '/sitemap.xml',
     gzip: true,
     cacheTime: 1000 * 60 * 60 * 24,
-    exclude: [
-      '/admin',
-      '/admin/articles',
-      '/admin/articles/create',
-      '/admin/categories',
-      '/admin/images',
-      '/admin/users',
-      '/login',
-    ],
+    exclude: ['/admin', '/admin/**', '/login', '/signup'],
     routes: async () => {
       axios.defaults.baseURL = process.env.apiUrl
 
@@ -253,6 +245,6 @@ export default {
   robots: {
     UserAgent: '*',
     Disallow: '/admin',
-    Sitemap: '/sitemap.xml',
+    Sitemap: `${process.env.baseURL}/sitemap.xml`,
   },
 }
