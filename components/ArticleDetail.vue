@@ -7,7 +7,7 @@
       ></h1>
       <div class="text-body-2 my-4 my-md-6">
         <v-avatar class="mr-3" size="50">
-          <img alt="" :src="avatar" />
+          <img alt="" :src="avatar" width="50" height="50" />
         </v-avatar>
         <span class="green--text text--darken-3 mr-3">{{ authorName }}</span>
         <span class="grey--text text--darken-2">{{
