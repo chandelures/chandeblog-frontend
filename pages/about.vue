@@ -33,8 +33,8 @@ export default {
     const data = await $axios.$get('about')
     if (data) {
       data.content = $marked.marked(data.content)
+      data.previous = data.next = null
     }
-    data.previous = data.next = null
     return { article: data, tocNode: $marked.tocNode }
   },
   data() {

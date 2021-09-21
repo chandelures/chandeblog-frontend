@@ -196,7 +196,9 @@ export default {
         }
       }
 
-      await getArticleRoutes('articles')
+      try {
+        await getArticleRoutes('articles')
+      } catch (err) {}
 
       return baseRoutes.concat(articlesRoutes)
     },

@@ -1,10 +1,7 @@
 <template>
   <v-container class="my-auto text-center">
-    <h1 v-if="error.statusCode === 404" class="text-h2 mb-6">
-      {{ pageNotFound }}
-    </h1>
-    <h1 v-else>
-      {{ otherError }}
+    <h1 class="text-h2 mb-6">
+      {{ msg }}
     </h1>
     <nuxt-link to="/" class="green--text text--darken-3 text-h6">
       Home Page
@@ -24,14 +21,29 @@ export default {
   data() {
     return {
       pageNotFound: '404 Not Found',
-      otherError: 'An error occurred',
+      serverError: '500 Server Error',
+      badGateway: '502 Bad GateWay',
+      otherError: 'Error Occurred',
+      msg: '',
     }
   },
   head() {
-    const title =
-      this.error.statusCode === 404 ? this.pageNotFound : this.otherError
+    switch (this.error.statusCode) {
+      case 404:
+        this.msg = this.pageNotFound
+        break
+      case 500:
+        this.msg = this.serverError
+        break
+      case 502:
+        this.msg = this.badGateway
+        break
+      default:
+        this.msg = this.otherError
+        break
+    }
     return {
-      title,
+      title: this.msg,
     }
   },
 }
