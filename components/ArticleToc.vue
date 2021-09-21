@@ -23,9 +23,10 @@ export default {
   },
   data() {
     return {
-      pos: null,
+      pos: 0,
       hrefs: [],
-      anchorElements: [],
+      anchors: [],
+      currentTop: 0,
     }
   },
   watch: {
@@ -37,6 +38,7 @@ export default {
   mounted() {
     this.getAnchors()
     this.getHrefs()
+    this.currentTop = this.getScrollTop()
     window.addEventListener('scroll', this.handleScroll)
   },
   destroyed() {
@@ -44,21 +46,18 @@ export default {
   },
   methods: {
     handleScroll() {
-      const scrollTop =
-        window.pageYOffset ||
-        document.documentElement.scrollTop ||
-        document.body.scrollTop
+      const scrollTop = this.getScrollTop()
 
-      for (let index = 0; index < this.hrefs.length; index++) {
+      const adjustPos = (index) => {
         const elementOffset = document.querySelector(
           this.hrefs[index]
         ).offsetTop
 
         if (index === this.hrefs.length - 1) {
           if (scrollTop > elementOffset) {
-            this.pos = this.anchorElements[index]
+            this.pos = index
           }
-          break
+          return 1
         }
 
         const nextElementOffset = document.querySelector(
@@ -66,33 +65,59 @@ export default {
         ).offsetTop
 
         if (scrollTop > elementOffset && scrollTop < nextElementOffset) {
-          this.pos = this.anchorElements[index]
-          break
+          this.pos = index
+          return 1
+        }
+
+        return 0
+      }
+
+      if (this.currentTop <= scrollTop) {
+        for (let index = this.pos + 1; index < this.hrefs.length; ++index) {
+          if (adjustPos(index)) {
+            break
+          }
+        }
+      } else {
+        for (let index = this.pos - 1; index >= 0; --index) {
+          if (adjustPos(index)) {
+            break
+          }
         }
       }
+
+      setTimeout(() => {
+        this.currentTop = scrollTop
+      }, 0)
+    },
+    getScrollTop() {
+      return (
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop
+      )
     },
     getAnchors() {
-      const _anchorElements = this.$el.querySelectorAll('a.anchor')
-      this.anchorElements = _anchorElements
-      if (this.anchorElements.length !== 0) this.pos = this.anchorElements[0]
+      const _anchors = this.$el.querySelectorAll('a.anchor')
+      this.anchors = _anchors
+      if (this.anchors.length !== 0) {
+        this.pos = 0
+        this.activeAnchor(this.pos)
+      }
     },
     getHrefs() {
       const _hrefs = []
-      this.anchorElements.forEach((item) => {
+      this.anchors.forEach((item) => {
         const href = decodeURI(item.getAttribute('href'))
         _hrefs.push(href.slice(href.indexOf('#')))
       })
       this.hrefs = _hrefs
     },
     activeAnchor(pos) {
-      if (pos) {
-        pos.parentNode.classList.add('active')
-      }
+      this.anchors[pos].parentNode.classList.add('active')
     },
     deactiveAnchor(pos) {
-      if (pos) {
-        pos.parentNode.classList.remove('active')
-      }
+      this.anchors[pos].parentNode.classList.remove('active')
     },
   },
 }
