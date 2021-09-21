@@ -13,7 +13,7 @@
               </v-img>
             </nuxt-link>
             <v-btn
-              v-for="(link, index) in links"
+              v-for="(link, index) in leftLinks"
               :key="index"
               :to="link.to"
               :ripple="false"
@@ -35,24 +35,15 @@
               Log out
             </v-btn>
             <v-btn
-              v-if="!$auth.loggedIn"
-              to="/login"
-              class="d-none d-md-flex my-auto"
+              v-for="(link, index) in loginLinks"
+              :key="index"
+              :to="link.to"
               :ripple="false"
+              class="d-none d-md-flex my-auto"
               text
               plain
             >
-              Log in
-            </v-btn>
-            <v-btn
-              v-if="!$auth.loggedIn"
-              to="/signup"
-              class="d-none d-md-flex my-auto"
-              :ripple="false"
-              text
-              plain
-            >
-              Sign up
+              {{ link.text }}
             </v-btn>
             <v-btn class="d-md-none" fab color="transparent" disabled plain>
             </v-btn>
@@ -64,7 +55,7 @@
       <v-list nav>
         <v-list-item-group v-model="group">
           <v-list-item
-            v-for="(item, index) in links"
+            v-for="(item, index) in leftLinks"
             :key="index"
             :to="item.to"
           >
@@ -73,11 +64,12 @@
           <v-list-item v-if="$auth.loggedIn" @click="logout">
             <v-list-item-title>Log out</v-list-item-title>
           </v-list-item>
-          <v-list-item v-if="!$auth.loggedIn" to="/login">
-            <v-list-item-title>Log in</v-list-item-title>
-          </v-list-item>
-          <v-list-item v-if="!$auth.loggedIn" to="/signup">
-            <v-list-item-title>Sign up</v-list-item-title>
+          <v-list-item
+            v-for="(link, index) in loginLinks"
+            :key="index"
+            :to="link.to"
+          >
+            <v-list-item-title v-text="link.text"> </v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -92,9 +84,13 @@ export default {
     return {
       drawer: false,
       group: null,
-      links: [
+      leftLinks: [
         { text: 'Home', to: '/' },
         { text: 'About', to: '/about' },
+      ],
+      loginLinks: [
+        { text: 'Log in', to: '' },
+        { text: 'Sign up', to: '' },
       ],
     }
   },
