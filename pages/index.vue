@@ -7,7 +7,10 @@
           max-width="690px"
           class="mx-auto my-lg-10 my-md-8 my-sm-6 my-4"
         >
-          <div v-for="(articlePre, index) in articleList" :key="articlePre.id">
+          <div
+            v-for="(articlePre, index) in articleList"
+            :key="articlePre.slug"
+          >
             <article-list-item v-bind="articlePre"></article-list-item>
             <v-divider
               v-if="index < articleList.length - 1"
