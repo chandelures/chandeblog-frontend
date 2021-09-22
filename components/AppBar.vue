@@ -13,8 +13,8 @@
               </v-img>
             </nuxt-link>
             <v-btn
-              v-for="(link, index) in leftLinks"
-              :key="index"
+              v-for="(link, i) in leftLinks"
+              :key="i + '-'"
               :to="link.to"
               :ripple="false"
               class="d-none d-md-flex my-auto"
@@ -35,8 +35,8 @@
               Log out
             </v-btn>
             <v-btn
-              v-for="(link, index) in loginLinks"
-              :key="index"
+              v-for="(link, i) in loginLinks"
+              :key="i + '+'"
               :to="link.to"
               :ripple="false"
               class="d-none d-md-flex my-auto"
@@ -55,8 +55,8 @@
       <v-list nav>
         <v-list-item-group v-model="group">
           <v-list-item
-            v-for="(item, index) in leftLinks"
-            :key="index"
+            v-for="(item, i) in leftLinks"
+            :key="i + '-'"
             :to="item.to"
           >
             <v-list-item-title v-text="item.text"></v-list-item-title>
@@ -65,8 +65,8 @@
             <v-list-item-title>Log out</v-list-item-title>
           </v-list-item>
           <v-list-item
-            v-for="(link, index) in loginLinks"
-            :key="index"
+            v-for="(link, i) in loginLinks"
+            :key="i + '+'"
             :to="link.to"
           >
             <v-list-item-title v-text="link.text"> </v-list-item-title>
