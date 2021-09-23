@@ -3,7 +3,7 @@
     <v-row>
       <v-col lg="3" md="2" sm="1" cols="0" class="d-none d-lg-flex pr-4">
       </v-col>
-      <v-col lg="6" md="8" sm="10" cols="12" class="mx-auto">
+      <v-col lg="6" md="8" sm="10" cols="12" class="px-6 px-sm-0 mx-auto">
         <article-detail v-bind="article"></article-detail>
       </v-col>
       <v-col lg="3" md="2" sm="1" cols="0" class="d-none d-lg-flex px-0">
