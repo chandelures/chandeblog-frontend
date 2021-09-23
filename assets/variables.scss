@@ -5,6 +5,11 @@
 
 $font-size-root: 17px;
 
+$body-font-family: Arial, Hiragino Sans GB, STHeiti, Helvetica Neue, Helvetica,
+  Microsoft Yahei, WenQuanYi Micro Hei, sans-serif;
+
+$code-font-family: Consolas, 'Liberation Mono', Courier, monospace;
+
 $grid-breakpoints: (
   'llg': 1600px,
   'xl': 1920px - 16px,

@@ -25,3 +25,10 @@ export default {
   },
 }
 </script>
+
+<style>
+header,
+footer {
+  font-family: 'Roboto', sans-serif;
+}
+</style>
