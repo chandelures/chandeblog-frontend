@@ -7,16 +7,17 @@
           max-width="690px"
           class="mx-auto my-lg-10 my-md-8 my-sm-6 my-4"
         >
-          <div
-            v-for="(articlePre, index) in articleList"
-            :key="articlePre.slug"
-          >
-            <article-list-item v-bind="articlePre"></article-list-item>
+          <template v-for="(articlePre, index) in articleList">
+            <article-list-item
+              :key="articlePre.slug"
+              v-bind="articlePre"
+            ></article-list-item>
             <v-divider
+              :key="articlePre.slug + 'divider'"
               v-if="index < articleList.length - 1"
               class="my-6"
             ></v-divider>
-          </div>
+          </template>
           <v-pagination
             v-if="Math.ceil(count / size) > 1"
             v-model="page"
