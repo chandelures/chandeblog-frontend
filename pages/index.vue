@@ -13,8 +13,8 @@
               v-bind="articlePre"
             ></article-list-item>
             <v-divider
-              :key="articlePre.slug + 'divider'"
               v-if="index < articleList.length - 1"
+              :key="articlePre.slug + 'divider'"
               class="my-6"
             ></v-divider>
           </template>
