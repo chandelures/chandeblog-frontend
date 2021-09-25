@@ -41,18 +41,38 @@
   }
   h1 {
     font-size: 2rem;
+
+    @media #{map-get($display-breakpoints, 'sm-and-down')} {
+      font-size: 1.8rem;
+    }
   }
   h2 {
     font-size: 1.8rem;
+
+    @media #{map-get($display-breakpoints, 'sm-and-down')} {
+      font-size: 1.6rem;
+    }
   }
   h3 {
     font-size: 1.6rem;
+
+    @media #{map-get($display-breakpoints, 'sm-and-down')} {
+      font-size: 1.4rem;
+    }
   }
   h4 {
     font-size: 1.4rem;
+
+    @media #{map-get($display-breakpoints, 'sm-and-down')} {
+      font-size: 1.2rem;
+    }
   }
   h5 {
     font-size: 1.2rem;
+
+    @media #{map-get($display-breakpoints, 'sm-and-down')} {
+      font-size: 1.1rem;
+    }
   }
   h6 {
     font-size: 1rem;
@@ -64,6 +84,7 @@
 
     @media #{map-get($display-breakpoints, 'sm-and-down')} {
       line-height: 28px;
+      font-size: 16px;
     }
   }
 
