@@ -12,17 +12,18 @@
               <v-img alt="CBLOG" src="../img/logo.png" width="100" contain>
               </v-img>
             </nuxt-link>
-            <v-btn
-              v-for="(link, i) in leftLinks"
-              :key="i + '-'"
-              :to="link.to"
-              :ripple="false"
-              class="d-none d-md-flex my-auto"
-              text
-              plain
-            >
-              {{ link.text }}
-            </v-btn>
+            <template v-for="link in leftLinks">
+              <v-btn
+                :key="link.text"
+                :to="link.to"
+                :ripple="false"
+                class="d-none d-md-flex my-auto"
+                text
+                plain
+              >
+                {{ link.text }}
+              </v-btn>
+            </template>
             <v-spacer class="d-none d-md-flex"> </v-spacer>
             <v-btn
               v-if="$auth.loggedIn"
@@ -34,17 +35,19 @@
             >
               Log out
             </v-btn>
-            <v-btn
-              v-for="(link, i) in loginLinks"
-              :key="i + '+'"
-              :to="link.to"
-              :ripple="false"
-              class="d-none d-md-flex my-auto"
-              text
-              plain
-            >
-              {{ link.text }}
-            </v-btn>
+            <template v-for="link in loginLinks">
+              <v-btn
+                v-if="link.show"
+                :key="link.text"
+                :to="link.to"
+                :ripple="false"
+                class="d-none d-md-flex my-auto"
+                text
+                plain
+              >
+                {{ link.text }}
+              </v-btn>
+            </template>
             <v-btn class="d-md-none" fab color="transparent" disabled plain>
             </v-btn>
           </v-col>
@@ -54,23 +57,19 @@
     <v-navigation-drawer v-model="drawer" absolute color="green darken-3" dark>
       <v-list nav>
         <v-list-item-group v-model="group">
-          <v-list-item
-            v-for="(item, i) in leftLinks"
-            :key="i + '-'"
-            :to="item.to"
-          >
-            <v-list-item-title v-text="item.text"></v-list-item-title>
-          </v-list-item>
+          <template v-for="link in leftLinks">
+            <v-list-item :key="link.text" :to="link.to">
+              <v-list-item-title v-text="link.text"></v-list-item-title>
+            </v-list-item>
+          </template>
           <v-list-item v-if="$auth.loggedIn" @click="logout">
             <v-list-item-title>Log out</v-list-item-title>
           </v-list-item>
-          <v-list-item
-            v-for="(link, i) in loginLinks"
-            :key="i + '+'"
-            :to="link.to"
-          >
-            <v-list-item-title v-text="link.text"> </v-list-item-title>
-          </v-list-item>
+          <template v-for="link in loginLinks">
+            <v-list-item v-if="link.show" :key="link.text" :to="link.to">
+              <v-list-item-title v-text="link.text"> </v-list-item-title>
+            </v-list-item>
+          </template>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -89,8 +88,8 @@ export default {
         { text: 'About', to: '/about' },
       ],
       loginLinks: [
-        { text: 'Log in', to: '' },
-        { text: 'Sign up', to: '' },
+        { text: 'Log in', to: '', show: !this.$auth.loggedIn },
+        { text: 'Sign up', to: '', show: !this.$auth.loggedIn },
       ],
     }
   },
