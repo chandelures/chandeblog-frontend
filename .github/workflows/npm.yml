@@ -23,3 +23,7 @@ jobs:
       - name: run lint with eslint
         run: |
           npm run lint
+
+      - name: run build 
+        run: |
+          npm run build
