@@ -55,8 +55,6 @@ export default {
     return {
       page: 1,
       size: 5,
-      count: 0,
-      articleList: null,
     }
   },
   head() {

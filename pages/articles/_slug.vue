@@ -35,12 +35,7 @@ export default {
     }
     return { article: data, tocNode: $marked.tocNode }
   },
-  data() {
-    return {
-      article: {},
-      tocNode: [],
-    }
-  },
+  data() {},
   head() {
     return {
       title: this.article.title,
