@@ -20,11 +20,7 @@
         <tr v-for="item in articleList" :key="item.id">
           <td>
             <nuxt-link
-              class="
-                text-decoration-none
-                green--text
-                text--darken-3 text-caption
-              "
+              class="text-decoration-none·green--text·text--darken-3·text-caption"
               :to="'/admin/articles/' + item.slug"
               v-text="item.title"
             ></nuxt-link>
