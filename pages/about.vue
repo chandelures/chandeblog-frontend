@@ -22,7 +22,7 @@ import ArticleToc from '~/components/ArticleToc.vue'
 import '~/assets/style/sidebar.scss'
 
 export default {
-  name: 'About',
+  name: 'AboutPage',
   components: {
     ArticleDetail,
     ArticleToc,
