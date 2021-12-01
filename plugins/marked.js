@@ -1,4 +1,4 @@
-import marked from 'marked'
+import { marked } from 'marked'
 import hljs from 'highlight.js'
 import katex from 'katex'
 
