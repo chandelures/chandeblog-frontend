@@ -24,31 +24,6 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      {
-        rel: 'stylesheet',
-        href: 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/styles/default.min.css',
-      },
-      {
-        rel: 'stylesheet',
-        href: 'https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css',
-      },
-    ],
-    script: [
-      {
-        hid: 'marked',
-        src: 'https://cdn.jsdelivr.net/npm/marked@latest/marked.min.js',
-        defer: true,
-      },
-      {
-        hid: 'katex',
-        src: 'https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js',
-        defer: true,
-      },
-      {
-        hid: 'highlightjs',
-        src: 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js',
-        defer: true,
-      },
     ],
   },
 
@@ -97,17 +72,7 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-    extend(config, { isDev, isClient }) {
-      if (isClient) {
-        config.externals = {
-          marked: 'marked',
-          'highlight.js': 'hljs',
-          katex: 'katex',
-        }
-      }
-    },
-  },
+  build: {},
 
   // Loading config
   loading: {

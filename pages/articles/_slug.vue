@@ -19,7 +19,6 @@
 import ArticleDetail from '~/components/ArticleDetail.vue'
 import ArticleToc from '~/components/ArticleToc.vue'
 
-import '~/assets/style/markdown.scss'
 import '~/assets/style/sidebar.scss'
 
 export default {

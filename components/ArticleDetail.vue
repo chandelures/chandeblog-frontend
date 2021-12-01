@@ -40,6 +40,10 @@
 </template>
 
 <script>
+import 'highlight.js/styles/default.css'
+import 'katex/dist/katex.css'
+import '~/assets/style/markdown.scss'
+
 export default {
   name: 'ArticleDetail',
   props: {
