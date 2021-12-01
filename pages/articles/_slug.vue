@@ -22,7 +22,7 @@ import ArticleToc from '~/components/ArticleToc.vue'
 import '~/assets/style/sidebar.scss'
 
 export default {
-  name: 'Article',
+  name: 'ArticlePage',
   components: {
     ArticleDetail,
     ArticleToc,
@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       article: {},
-      tocNode: [],
+      tocNode: []
     }
   },
   head() {

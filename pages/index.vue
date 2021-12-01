@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  name: 'Index',
+  name: 'IndexPage',
   components: {},
   auth: false,
   async asyncData({ $axios, $marked }) {
