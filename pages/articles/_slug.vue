@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       article: {},
-      tocNode: []
+      tocNode: [],
     }
   },
   head() {
