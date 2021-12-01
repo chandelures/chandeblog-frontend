@@ -19,7 +19,7 @@
 import AdminNav from '~/components/AdminNav.vue'
 
 export default {
-  name: 'Admin',
+  name: 'AdminLayout',
   components: { AdminNav },
 }
 </script>

@@ -12,7 +12,7 @@ import AdminBar from '~/components/AdminBar.vue'
 export default {
   name: 'AdminArticlesCreate',
   components: { AdminBar, AdminArticleUpdate },
-  layout: 'admin',
+  layout: 'AdminLayout',
   middleware: ['auth-admin'],
   data() {
     return {

@@ -27,8 +27,8 @@
 
 <script>
 export default {
-  name: 'Login',
-  layout: 'empty',
+  name: 'LoginPage',
+  layout: 'EmptyLayout',
   auth: 'guest',
   data() {
     return {

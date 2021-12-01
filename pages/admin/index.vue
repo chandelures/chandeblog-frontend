@@ -9,7 +9,7 @@ import AdminBar from '~/components/AdminBar.vue'
 export default {
   name: 'AdminIndex',
   components: { AdminBar },
-  layout: 'admin',
+  layout: 'AdminLayout',
   middleware: ['auth-admin'],
   data() {
     return {

@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  name: 'Index',
+  name: 'IndexPage',
   components: {},
   auth: false,
   async asyncData({ $axios, $marked }) {
@@ -55,8 +55,6 @@ export default {
     return {
       page: 1,
       size: 5,
-      count: 0,
-      articleList: null,
     }
   },
   head() {
