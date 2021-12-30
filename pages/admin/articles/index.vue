@@ -45,7 +45,7 @@ import AdminBar from '~/components/AdminBar.vue'
 export default {
   name: 'AdminArticles',
   components: { AdminBar },
-  layout: 'AdminLayout',
+  layout: 'admin',
   middleware: ['auth-admin'],
   data() {
     return {
