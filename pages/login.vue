@@ -54,7 +54,6 @@ export default {
           this.$router.go(0)
         }
       } catch (err) {
-        console.log(err)
         this.$toast.error('用户名或密码错误')
       }
     },
