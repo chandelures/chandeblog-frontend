@@ -95,7 +95,7 @@ export default {
         token: {
           property: 'token',
           required: true,
-          type: 'Token',
+          type: 'Bearer',
         },
         user: {
           property: false,

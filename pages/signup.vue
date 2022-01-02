@@ -46,7 +46,7 @@
 <script>
 export default {
   name: 'SignUpPage',
-  layout: 'EmptyLayout',
+  layout: 'empty',
   auth: 'guest',
   data() {
     return {

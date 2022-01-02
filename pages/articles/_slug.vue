@@ -29,7 +29,7 @@ export default {
   },
   auth: false,
   async asyncData({ params, $axios, $marked }) {
-    const data = await $axios.$get('articles/' + params.slug)
+    const data = await $axios.$get(encodeURI('articles/' + params.slug))
     if (data) {
       data.content = $marked.marked(data.content)
     }
