@@ -114,7 +114,7 @@ export default {
     },
     async createArticle() {
       try {
-        const data = await this.$axios.$post('articles/create', this.article)
+        const data = await this.$axios.$post('articles', this.article)
         this.$toast.success('创建成功')
         this.$router.push(`/admin/articles/${data.slug}`)
       } catch (err) {
