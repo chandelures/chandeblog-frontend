@@ -48,6 +48,11 @@ export default {
     handleScroll() {
       const scrollTop = this.getScrollTop()
 
+      if (this.reachTop()) {
+        this.pos = 0
+        return
+      }
+
       if (this.reachBottom()) {
         this.pos = this.hrefs.length - 1
         return
@@ -102,7 +107,14 @@ export default {
         document.body.scrollTop
       )
     },
-    reachBottom(offset = 10) {
+    reachTop(offset = 50) {
+      const scrollTop = this.getScrollTop()
+      if (scrollTop < offset) {
+        return true
+      }
+      return false
+    },
+    reachBottom(offset = 50) {
       const scrollTop = this.getScrollTop()
       const windowHeight = window.innerHeight
       const scrollHeight = document.body.scrollHeight
