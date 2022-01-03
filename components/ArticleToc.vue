@@ -102,7 +102,7 @@ export default {
         document.body.scrollTop
       )
     },
-    reachBottom(offset = 50) {
+    reachBottom(offset = 10) {
       const scrollTop = this.getScrollTop()
       const windowHeight = window.innerHeight
       const scrollHeight = document.body.scrollHeight
