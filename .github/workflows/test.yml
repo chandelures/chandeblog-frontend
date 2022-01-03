@@ -1,8 +1,13 @@
 # This workflow will install npm dependencies, run lint with a single version of npm
 
-name: Npm
+name: Test and Lint
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+      - dev
+  pull_request:
 
 jobs:
   build:
@@ -10,20 +15,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: set up npm
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2
         with:
           node-version: 14.x
-
-      - name: install dependencies
+      - name: Install dependencies
         run: |
           npm install
-
-      - name: run lint with eslint
+      - name: Run lint with eslint
         run: |
           npm run lint
-
-      - name: run build 
+      - name: Run build
         run: |
           npm run build
