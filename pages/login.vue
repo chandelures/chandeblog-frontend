@@ -5,7 +5,7 @@
       <v-text-field
         v-model="login.username"
         type="text"
-        label="用户名"
+        label="用户名 / Email"
         color="black"
         required
       >
@@ -37,7 +37,7 @@ export default {
         password: '',
       },
       loginRule: {
-        username: [(v) => !!v || '请输入用户名'],
+        username: [(v) => !!v || '请输入用户名或邮箱'],
         password: [(v) => !!v || '请输入密码'],
       },
       showPassword: false,
@@ -45,15 +45,12 @@ export default {
   },
   methods: {
     async userLogin() {
-      try {
-        await this.$auth.loginWith('local', {
-          data: this.login,
-        })
-        if (this.$auth.loggedIn) {
-          this.$toast.success('登陆成功')
-          this.$router.go(0)
-        }
-      } catch (err) {
+      await this.$auth.loginWith('local', {
+        data: this.login,
+      })
+      if (this.$auth.loggedIn) {
+        this.$toast.success('登陆成功')
+      } else {
         this.$toast.error('用户名或密码错误')
       }
     },
