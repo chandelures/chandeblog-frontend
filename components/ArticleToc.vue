@@ -48,6 +48,11 @@ export default {
     handleScroll() {
       const scrollTop = this.getScrollTop()
 
+      if (this.reachBottom()) {
+        this.pos = this.hrefs.length - 1
+        return
+      }
+
       const adjustPos = (index) => {
         const elementOffset = document.querySelector(
           this.hrefs[index]
@@ -57,7 +62,7 @@ export default {
           if (scrollTop > elementOffset) {
             this.pos = index
           }
-          return 1
+          return true
         }
 
         const nextElementOffset = document.querySelector(
@@ -66,10 +71,10 @@ export default {
 
         if (scrollTop > elementOffset && scrollTop < nextElementOffset) {
           this.pos = index
-          return 1
+          return true
         }
 
-        return 0
+        return false
       }
 
       if (this.currentTop <= scrollTop) {
@@ -96,6 +101,15 @@ export default {
         document.documentElement.scrollTop ||
         document.body.scrollTop
       )
+    },
+    reachBottom(offset = 50) {
+      const scrollTop = this.getScrollTop()
+      const windowHeight = window.innerHeight
+      const scrollHeight = document.body.scrollHeight
+      if (scrollTop + windowHeight + offset >= scrollHeight) {
+        return true
+      }
+      return false
     },
     getAnchors() {
       const _anchors = this.$el.querySelectorAll('a.anchor')
