@@ -1,6 +1,8 @@
 # Chandeblog Front End
 
-This is a front end project for [chandeblog](https://blog.chandelure.com) based on vuejs. The back end blog project is https://github.com/chandelures/chandeblog.git.
+[![build](https://github.com/chandelures/chandeblog-frontend/workflows/build/badge.svg?branch=master)](https://github.com/chandelures/chandeblog-frontend/actions?query=branch%3Amaster)
+
+This is front end assembly for [chandeblog](https://blog.chandelure.com) based on nuxt. The back end assembly is on https://github.com/chandelures/chandeblog.git.
 
 ## Credits
 
