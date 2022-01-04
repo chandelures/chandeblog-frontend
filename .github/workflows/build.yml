@@ -1,6 +1,6 @@
 # This workflow will install npm dependencies, run lint with a single version of npm
 
-name: Test and Lint
+name: build
 
 on:
   push:
