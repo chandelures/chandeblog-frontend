@@ -19,7 +19,7 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "@nuxtjs/toast": "^3.3.1",
     "core-js": "^3.21.1",
-    "highlight.js": "^11.5.0",
+    "highlight.js": "^11.5.1",
     "katex": "^0.15.3",
     "marked": "^4.0.14",
     "nuxt": "^2.15.8"
