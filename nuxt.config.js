@@ -1,11 +1,6 @@
 import axios from 'axios'
 
 export default {
-  // ENV config
-  env: {
-    apiUrl: process.env.apiUrl || 'http://localhost:5000',
-  },
-
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     htmlAttrs: {
