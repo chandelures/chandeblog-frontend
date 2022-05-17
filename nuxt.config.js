@@ -3,7 +3,7 @@ import axios from 'axios'
 export default {
   // ENV config
   env: {
-    apiUrl: process.env.apiUrl || 'http://localhost:8000',
+    apiUrl: process.env.apiUrl || 'http://localhost:5000',
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -59,7 +59,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: process.env.apiUrl,
+    baseURL: process.env.apiUrl || 'http://localhost:5000',
     credentials: false,
   },
 
@@ -122,7 +122,7 @@ export default {
     cacheTime: 1000 * 60 * 60 * 24,
     exclude: ['/admin', '/admin/**', '/login', '/signup'],
     routes: async () => {
-      axios.defaults.baseURL = process.env.apiUrl
+      axios.defaults.baseURL = process.env.apiUrl || 'http://localhost:5000'
 
       const baseRoutes = [
         {
@@ -169,7 +169,7 @@ export default {
 
   // Feed config
   feed: async () => {
-    axios.defaults.baseURL = process.env.apiUrl
+    axios.defaults.baseURL = process.env.apiUrl || 'http://localhost:5000'
     let articles = []
     const getArticles = async (url) => {
       try {
@@ -185,9 +185,10 @@ export default {
     return {
       path: 'feed.xml',
       create(feed) {
+        const baseURL = process.env.baseURL || 'http://localhost:3000'
         feed.options = {
           title: 'Chandelure Blog - Clog',
-          link: `${process.env.baseURL}/feed.xml`,
+          link: `${baseURL}/feed.xml`,
           description: 'All posts in Chandelure Blog',
         }
 
@@ -195,7 +196,7 @@ export default {
           feed.addItem({
             title: article.title,
             id: article.id,
-            link: `${process.env.baseURL}/articles/${article.slug}`,
+            link: `${baseURL}/articles/${article.slug}`,
             description:
               article.abstract.replace(/[\r\n]/g, '').slice(0, 100) + '...',
           })
