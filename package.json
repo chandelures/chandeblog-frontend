@@ -19,6 +19,7 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "@nuxtjs/toast": "^3.3.1",
     "core-js": "^3.22.5",
+    "fsevents": "*",
     "highlight.js": "^11.5.1",
     "katex": "^0.15.3",
     "marked": "^4.0.15",
@@ -34,8 +35,7 @@
     "eslint-plugin-nuxt": "^3.2.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.7.1",
-    "prettier": "^2.6.2",
-    "sass-loader": "^10"
+    "prettier": "^2.6.2"
   },
   "optionalDependencies": {
     "fsevents": "*"
