@@ -10,7 +10,7 @@
           <img alt="" :src="avatar" width="40" height="40" />
         </v-avatar>
         <span
-          class="green--text text--darken-3 font-weight-bold mr-3 mb-auto mt-auto"
+          class="green--text text--darken-3 font-weight-bold mb-auto mt-auto"
           >{{ authorName }}</span
         >
         <span class="grey--text text--darken-2 ml-auto mb-auto mt-auto">{{
