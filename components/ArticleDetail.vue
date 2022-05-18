@@ -5,15 +5,19 @@
         class="text-h4 text-md-h3 font-weight-black markdown-title"
         v-text="title"
       ></h1>
-      <div class="text-body-2 my-4 my-md-6">
-        <v-avatar class="mr-3" size="50">
-          <img alt="" :src="avatar" width="50" height="50" />
+      <div class="d-flex text-subtitle-1 my-4 my-md-6">
+        <v-avatar class="mr-4" size="40">
+          <img alt="" :src="avatar" width="40" height="40" />
         </v-avatar>
-        <span class="green--text text--darken-3 mr-3">{{ authorName }}</span>
-        <span class="grey--text text--darken-2">{{
+        <span
+          class="green--text text--darken-3 font-weight-bold mb-auto mt-auto"
+          >{{ authorName }}</span
+        >
+        <span class="grey--text text--darken-2 ml-auto mb-auto mt-auto">{{
           created | formatDate
         }}</span>
       </div>
+      <v-divider class="mt-4 mb-10"></v-divider>
       <!-- eslint-disable vue/no-v-html -->
       <section class="markdown-body" v-html="content"></section>
       <!--eslint-enable-->
