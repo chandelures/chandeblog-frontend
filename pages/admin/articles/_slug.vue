@@ -9,6 +9,10 @@
 import AdminBar from '~/components/AdminBar.vue'
 import AdminArticleUpdate from '~/components/AdminArticleUpdate.vue'
 
+import 'highlight.js/styles/default.css'
+import 'katex/dist/katex.css'
+import '~/assets/style/markdown.scss'
+
 export default {
   name: 'AdminArticleDetail',
   components: { AdminBar, AdminArticleUpdate },
