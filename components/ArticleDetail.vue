@@ -6,7 +6,7 @@
         v-text="title"
       ></h1>
       <div class="d-flex text-subtitle-1 my-4 my-md-6">
-        <v-avatar class="mr-4" size="50">
+        <v-avatar class="mr-4" size="40">
           <img alt="" :src="avatar" width="40" height="40" />
         </v-avatar>
         <span
