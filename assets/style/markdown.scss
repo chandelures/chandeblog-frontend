@@ -5,6 +5,9 @@
 }
 
 .markdown-body {
+  line-height: 1.5;
+  word-wrap: break-word;
+
   // Base
   p,
   blockquote,
@@ -15,8 +18,7 @@
   table {
     text-align: justify;
     color: #{map-get($grey, 'darken-3')};
-    margin: 0.8rem 0;
-    word-wrap: break-word;
+    margin-bottom: 16px;
   }
 
   // Images
@@ -37,7 +39,8 @@
     page-break-after: avoid;
     break-after: avoid-page;
     page-break-inside: avoid;
-    margin: 1rem 0;
+    margin-top: 24px;
+    margin-bottom: 16px;
   }
   h1 {
     font-size: 2rem;
@@ -80,10 +83,7 @@
 
   // Paragraph
   p {
-    line-height: 30px;
-
     @media #{map-get($display-breakpoints, 'sm-and-down')} {
-      line-height: 28px;
       font-size: 16px;
     }
   }
@@ -92,6 +92,10 @@
   a {
     color: #{map-get($green, 'darken-3')} !important;
     cursor: pointer;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
   }
 
   // Table
@@ -146,23 +150,13 @@
   }
 
   // List
-  li div {
-    padding-top: 0;
-  }
-  li p {
-    margin: 0.5rem 0;
-  }
-  li {
-    margin: 0;
-    position: relative;
-  }
-  li > :first-child {
-    margin-top: 0;
+  li + li {
+    margin-top: 0.25em;
   }
 
   // Code
   pre {
-    margin: 0.8rem 0;
+    margin-bottom: 16px;
   }
   code {
     font-family: $code-font-family;
@@ -176,7 +170,7 @@
   pre code {
     display: block;
     overflow-x: auto;
-    padding: 0.6em !important;
+    padding: 16px;
   }
   kbd {
     margin: 0 0.1em;
