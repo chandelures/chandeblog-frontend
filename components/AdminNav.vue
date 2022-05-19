@@ -14,7 +14,7 @@
           :to="item.to"
           :exact="true"
         >
-          <v-list-item-content v-text="item.name"></v-list-item-content>
+          <v-list-item-content>{{ item.name }}</v-list-item-content>
         </v-list-item>
       </v-list-item-group>
     </v-list>

@@ -7,8 +7,8 @@
       <nuxt-link
         class="grey--text text--darken-3 text-decoration-none"
         :to="'/articles/' + slug"
-        v-text="title"
       >
+        {{ title }}
       </nuxt-link>
     </h1>
     <!-- eslint-disable vue/no-v-html -->
