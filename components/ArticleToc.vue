@@ -5,8 +5,8 @@
         <nuxt-link
           :class="`anchor ${item.level === 3 ? 'pl-2' : ''}`"
           :to="`#${item.anchor}`"
-          v-text="item.text"
-        ></nuxt-link>
+          >{{ item.text }}</nuxt-link
+        >
       </li>
     </ul>
   </div>

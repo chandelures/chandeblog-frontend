@@ -59,7 +59,7 @@
         <v-list-item-group v-model="group">
           <template v-for="link in leftLinks">
             <v-list-item :key="link.text" :to="link.to">
-              <v-list-item-title v-text="link.text"></v-list-item-title>
+              <v-list-item-title>{{ link.text }}</v-list-item-title>
             </v-list-item>
           </template>
           <v-list-item v-if="$auth.loggedIn" @click="logout">
@@ -67,7 +67,7 @@
           </v-list-item>
           <template v-for="link in loginLinks">
             <v-list-item v-if="link.show" :key="link.text" :to="link.to">
-              <v-list-item-title v-text="link.text"> </v-list-item-title>
+              <v-list-item-title>{{ link.text }}</v-list-item-title>
             </v-list-item>
           </template>
         </v-list-item-group>

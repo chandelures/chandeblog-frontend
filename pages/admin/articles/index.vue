@@ -22,8 +22,8 @@
             <nuxt-link
               class="text-decoration-none·green--text·text--darken-3·text-caption"
               :to="'/admin/articles/' + item.slug"
-              v-text="item.title"
-            ></nuxt-link>
+              >{{ item.title }}</nuxt-link
+            >
           </td>
         </tr>
       </tbody>
