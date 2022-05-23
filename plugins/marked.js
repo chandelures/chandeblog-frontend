@@ -39,15 +39,18 @@ const tokenizer = {
     const match = src.match(/^\$\$([\s\S]+?)\$\$/)
 
     if (match) {
-      return {
+      const token = {
         type: 'paragraph',
         raw: match[0],
-        text: katex.renderToString(match[1].replace(/\$/g, ''), {
+        text: katex.renderToString(match[1], {
           throwOnError: false,
           displayMode: true,
           strict: false,
         }),
+        tokens: [],
       }
+      this.lexer.inline(token.text, token.tokens)
+      return token
     }
 
     return false
@@ -71,6 +74,7 @@ const tokenizer = {
         type: 'text',
         raw: src,
         text,
+        tokens: [],
       }
     }
     return false
