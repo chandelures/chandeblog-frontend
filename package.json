@@ -22,7 +22,7 @@
     "fsevents": "*",
     "highlight.js": "^11.6.0",
     "katex": "^0.16.3",
-    "marked": "^4.2.0",
+    "marked": "^4.2.2",
     "nuxt": "^2.15.8"
   },
   "devDependencies": {
