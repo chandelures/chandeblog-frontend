@@ -23,7 +23,7 @@
     "highlight.js": "^11.6.0",
     "katex": "^0.16.3",
     "marked": "^4.2.0",
-    "nuxt": "^2.15.8"
+    "nuxt": "^3.0.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
