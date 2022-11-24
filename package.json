@@ -20,7 +20,7 @@
     "@nuxtjs/toast": "^3.3.1",
     "core-js": "^3.26.0",
     "fsevents": "*",
-    "highlight.js": "^11.6.0",
+    "highlight.js": "^11.7.0",
     "katex": "^0.16.3",
     "marked": "^4.2.0",
     "nuxt": "^2.15.8"
