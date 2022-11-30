@@ -6,7 +6,6 @@ export default function Document() {
     <Html>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="https://fonts.font.im/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"></link>
       </Head>
       <body>
         <Main />

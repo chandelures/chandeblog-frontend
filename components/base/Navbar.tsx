@@ -7,7 +7,7 @@ import {
   Box,
 } from "@mui/material";
 
-const logo = "CBlog";
+const logo = "CBlOG";
 const links = ["Home", "About"];
 
 export default function Navbar() {
@@ -34,10 +34,7 @@ export default function Navbar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {links.map((page) => (
-              <Button
-                key={page}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
+              <Button key={page} sx={{ color: "white", display: "block" }}>
                 {page}
               </Button>
             ))}
