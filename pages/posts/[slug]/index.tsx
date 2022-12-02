@@ -1,5 +1,17 @@
 import { GetServerSideProps } from "next";
-import Main from "components/post/Main";
+import Head from "next/head";
+import { Grid } from "@mui/material";
+
+import Content from "components/post/Content";
+
+interface PostProps {
+  post: {
+    title: string;
+    description: string;
+    content: string;
+    created: string;
+  };
+}
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const slug = context.query.slug;
@@ -9,16 +21,26 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       notFound: true,
     };
   }
-  const data = await res.json();
+  const post = await res.json();
   return {
-    props: { data },
+    props: { post },
   };
 };
 
-export default function Post({ data }: { data: JSON }) {
+export default function Post(props: PostProps) {
+  const { post } = props;
   return (
     <>
-      <Main />
+      <Head>
+        <title>CBlog</title>
+        <meta name="description" content={post.description} />
+      </Head>
+      <Grid container spacing={6} sx={{ my: 2 }}>
+        <Grid item xs={12} lg={3}></Grid>
+        <Grid item xs={12} lg={9}>
+          <Content post={post} />
+        </Grid>
+      </Grid>
     </>
   );
 }

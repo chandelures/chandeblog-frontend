@@ -1,10 +1,12 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import { Grid } from "@mui/material";
-import Main from "components/index/Main";
-import Sidebar from "components/index/SideBar";
+import { Grid, Stack } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import Mail from "@mui/icons-material/Mail";
+
+import PostList from "components/index/PostList";
+import Paginator from "components/index/Paginator";
+import Sidebar from "components/index/SideBar";
 
 type HomeProps = {
   page: number;
@@ -36,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 const socials = [
   { name: "Github", icon: GitHubIcon, url: "https://github.com/chandelures" },
-  { name: "Mail", icon: Mail, url: "mailto://me@chandelure.me" },
+  { name: "Mail", icon: Mail, url: "mailto:wanghch@chandelure.me" },
 ];
 
 export default function Home(props: HomeProps) {
@@ -53,7 +55,10 @@ export default function Home(props: HomeProps) {
           <Sidebar socials={socials} />
         </Grid>
         <Grid item xs={12} lg={9}>
-          <Main posts={data.results} page={page} pageCount={pageCount} />
+          <PostList posts={data.results} />
+          <Stack alignItems="center" sx={{ mb: 6 }}>
+            <Paginator count={pageCount} page={page} />
+          </Stack>
         </Grid>
       </Grid>
     </>

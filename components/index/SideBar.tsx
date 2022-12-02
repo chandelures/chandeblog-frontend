@@ -28,7 +28,7 @@ export default function Sidebar(props: SidebarProps) {
       <Typography
         variant="subtitle1"
         align="center"
-        color="text.primary"
+        color="text.secondary"
         gutterBottom
       >
         {"chandelure's blog"}

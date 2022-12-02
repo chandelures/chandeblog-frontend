@@ -2,7 +2,7 @@ import { Box, Container, Typography, Link } from "@mui/material";
 
 export default function Footer() {
   return (
-    <Box component="footer">
+    <Box component="footer" sx={{ mt: 8 }}>
       <Container
         maxWidth="lg"
         sx={{ py: 6, borderTop: 1, borderColor: "text.disabled" }}

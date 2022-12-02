@@ -1,11 +1,5 @@
-import {
-  Box,
-  Typography,
-  Link,
-  Pagination,
-  PaginationItem,
-  Stack,
-} from "@mui/material";
+import { Box, Link, Typography } from "@mui/material";
+import CreateDate from "components/general/CreateDate";
 
 const formatDate = (dateStr: string) => {
   const date = new Date(dateStr);
@@ -29,9 +23,7 @@ const formatDate = (dateStr: string) => {
   return monthNames[month] + " " + day + ", " + year;
 };
 
-interface MainProps {
-  page: number;
-  pageCount: number;
+interface PostListProps {
   posts: ReadonlyArray<{
     title: string;
     description: string;
@@ -40,8 +32,8 @@ interface MainProps {
   }>;
 }
 
-export default function Main(props: MainProps) {
-  const { posts, page, pageCount } = props;
+export default function PostList(props: PostListProps) {
+  const { posts } = props;
   return (
     <>
       {posts.map((post) => (
@@ -56,30 +48,13 @@ export default function Main(props: MainProps) {
             >
               {post.title}
             </Link>
-            <Typography variant="subtitle1" color="text.secondary">
-              {formatDate(post.created)}
-            </Typography>
+            <CreateDate dateStr={post.created} />
           </Box>
           <Typography variant="body1" color="text.primary">
             {post.description}
           </Typography>
         </Box>
       ))}
-      <Stack alignItems="center" sx={{ mb: 6 }}>
-        <Pagination
-          count={pageCount}
-          color="primary"
-          page={page}
-          size="large"
-          renderItem={(item) => (
-            <PaginationItem
-              component={Link}
-              href={`/${item.page === 1 ? "" : `?page=${item.page}`}`}
-              {...item}
-            />
-          )}
-        />
-      </Stack>
     </>
   );
 }
