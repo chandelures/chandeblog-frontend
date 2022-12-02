@@ -1,9 +1,9 @@
 import { GetServerSideProps } from "next";
+import Main from "components/post/Main";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const slug = context.query.slug;
   const res = await fetch(`${process.env.apiURL}/posts/${slug}`);
-  console.log(res)
   if (res.status == 404) {
     return {
       notFound: true,
@@ -16,5 +16,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 export default function Post({ data }: { data: JSON }) {
-  return <></>;
+  return (
+    <>
+      <Main />
+    </>
+  );
 }

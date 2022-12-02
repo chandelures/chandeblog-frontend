@@ -8,7 +8,10 @@ import {
 } from "@mui/material";
 
 const logo = "CBlOG";
-const links = ["Home", "About"];
+const links = [
+  { name: "Home", to: "/" },
+  { name: "About", to: "#" },
+];
 
 export default function Navbar() {
   return (
@@ -33,9 +36,13 @@ export default function Navbar() {
             {logo}
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {links.map((page) => (
-              <Button key={page} sx={{ color: "white", display: "block" }}>
-                {page}
+            {links.map((link) => (
+              <Button
+                key={link.name}
+                href={link.to}
+                sx={{ color: "white", display: "block" }}
+              >
+                {link.name}
               </Button>
             ))}
           </Box>

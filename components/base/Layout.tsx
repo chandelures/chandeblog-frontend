@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: ReactElement }) {
   return (
     <>
       <Navbar />
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ minHeight: "80vh" }}>
         <main>{children}</main>
       </Container>
       <Footer />
