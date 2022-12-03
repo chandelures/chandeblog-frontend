@@ -1,8 +1,6 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { Grid, Stack } from "@mui/material";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import Mail from "@mui/icons-material/Mail";
 
 import PostList from "components/index/PostList";
 import Paginator from "components/index/Paginator";
@@ -36,11 +34,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-const socials = [
-  { name: "Github", icon: GitHubIcon, url: "https://github.com/chandelures" },
-  { name: "Mail", icon: Mail, url: "mailto:wanghch@chandelure.me" },
-];
-
 export default function Home(props: HomeProps) {
   const { data, page, pageCount } = props;
 
@@ -52,11 +45,11 @@ export default function Home(props: HomeProps) {
       </Head>
       <Grid container spacing={6} sx={{ my: 2 }}>
         <Grid item xs={12} lg={3}>
-          <Sidebar socials={socials} />
+          <Sidebar />
         </Grid>
         <Grid item xs={12} lg={9}>
           <PostList posts={data.results} />
-          <Stack alignItems="center" sx={{ mb: 6 }}>
+          <Stack alignItems="center" sx={{ mt: 10, mb: 6 }}>
             <Paginator count={pageCount} page={page} />
           </Stack>
         </Grid>

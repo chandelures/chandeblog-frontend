@@ -33,10 +33,10 @@ export default function Post(props: PostProps) {
     <>
       <Head>
         <title>CBlog</title>
-        <meta name="description" content={post.description} />
+        <meta name="description" content={post.description.slice(0, 50)} />
       </Head>
       <Grid container spacing={6} sx={{ my: 2 }}>
-        <Grid item xs={12} lg={3}></Grid>
+        <Grid item xs={12} lg={3} sx={{ display: {xs: "none", lg: "block"}}}></Grid>
         <Grid item xs={12} lg={9}>
           <Content post={post} />
         </Grid>

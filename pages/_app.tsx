@@ -17,6 +17,7 @@ let theme = createTheme({
     secondary: indigo,
     text: {
       primary: "#0C3C26",
+      secondary: "#607261",
     },
   },
   typography: {
