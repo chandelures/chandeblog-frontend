@@ -3,9 +3,15 @@ Backend project is on https://github.com/chandelures/chandeblog.
 
 ## Development
 
-Run the development server:
+At first, you need install dependencies
 
-```bash
+```shell
+npm install
+```
+
+Then run the development server:
+
+```shell
 npm run dev
 ```
 
