@@ -19,7 +19,7 @@ export default function Navbar() {
       <Container maxWidth="lg">
         <Toolbar disableGutters>
           <Typography
-            variant="h5"
+            variant="h2"
             noWrap
             component="a"
             href="/"

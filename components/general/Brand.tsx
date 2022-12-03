@@ -7,7 +7,7 @@ export default function Brand() {
   return (
     <>
       <Typography
-        variant="h5"
+        variant="h2"
         align="center"
         color="primary.main"
         gutterBottom

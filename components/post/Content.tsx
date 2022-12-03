@@ -15,7 +15,7 @@ export default function Content(props: ContentProps) {
   const { post } = props;
   return (
     <>
-      <Typography variant="h4" color="text.primary" sx={{ fontWeight: 600 }}>
+      <Typography variant="h1" color="text.primary" sx={{ fontWeight: 600 }}>
         {post.title}
       </Typography>
       <CreateDate dateStr={post.created} />

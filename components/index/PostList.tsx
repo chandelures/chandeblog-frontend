@@ -42,7 +42,7 @@ export default function PostList(props: PostListProps) {
             <Link
               color="inherit"
               underline="hover"
-              variant="h4"
+              variant="h2"
               sx={{ fontWeight: 600, color: "text.primary" }}
               href={`/posts/${post.slug}`}
             >
