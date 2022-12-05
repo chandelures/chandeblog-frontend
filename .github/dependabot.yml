@@ -2,10 +2,10 @@ version: 2
 updates:
   # Fetch and update latest `npm` packages
   - package-ecosystem: npm
-    directory: '/'
+    directory: "/"
     schedule:
-      interval: daily
-      time: '00:00'
+      interval: weekly
+      time: "00:00"
     open-pull-requests-limit: 10
     target-branch: master
     reviewers:
@@ -15,4 +15,3 @@ updates:
     commit-message:
       prefix: build
       prefix-development: chore
-      include: scope
