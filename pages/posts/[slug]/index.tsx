@@ -2,6 +2,7 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { Grid } from "@mui/material";
 
+import Layout from "components/base/Layout"
 import Content from "components/post/Content";
 import SideBar from "components/post/Sidebar";
 
@@ -38,7 +39,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 export default function Post(props: PostProps) {
   const { post } = props;
   return (
-    <>
+    <Layout>
       <Head>
         <title>CBlog</title>
         <meta name="description" content={post.description.slice(0, 50)} />
@@ -51,6 +52,6 @@ export default function Post(props: PostProps) {
           <Content post={post} />
         </Grid>
       </Grid>
-    </>
+    </Layout>
   );
 }

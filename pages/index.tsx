@@ -2,6 +2,8 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { Grid, Stack } from "@mui/material";
 
+import Layout from "components/base/Layout";
+
 import PostList from "components/index/PostList";
 import Paginator from "components/index/Paginator";
 import Sidebar from "components/index/SideBar";
@@ -45,7 +47,7 @@ export default function Home(props: HomeProps) {
   const { data, page, pageCount } = props;
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>CBlog</title>
         <meta name="description" content="chandelure's blog" />
@@ -61,6 +63,6 @@ export default function Home(props: HomeProps) {
           </Stack>
         </Grid>
       </Grid>
-    </>
+    </Layout>
   );
 }
