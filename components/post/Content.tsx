@@ -1,5 +1,8 @@
 import { Divider, Typography } from "@mui/material";
-import Markdown from "components/general/Markdown";
+
+import dynamic from "next/dynamic";
+
+const Markdown = dynamic(() => import("components/general/Markdown"));
 
 import CreateDate from "components/general/CreateDate";
 

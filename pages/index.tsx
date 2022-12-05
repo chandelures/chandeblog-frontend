@@ -20,13 +20,20 @@ type HomeProps = {
   };
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const page = parseInt(String(context.query.page)) || 1;
+export const getServerSideProps: GetServerSideProps = async ({
+  query,
+  res,
+}) => {
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=30, stale-while-revalidate=59"
+  );
+  const page = parseInt(String(query.page)) || 1;
   const size = 5;
-  const res = await fetch(
+  const request = await fetch(
     `${process.env.apiURL}/posts?page=${page}&size=${size}`
   );
-  const data = await res.json();
+  const data = await request.json();
   const pageCount = Math.ceil(data.count / size);
 
   return {

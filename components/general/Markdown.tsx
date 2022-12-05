@@ -1,3 +1,4 @@
+import { Divider, Typography, Link } from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
@@ -8,7 +9,6 @@ import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneLight } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 import "katex/dist/katex.min.css";
-import { Divider, Typography, Link } from "@mui/material";
 
 interface MarkdownProps {
   children: string;
@@ -142,13 +142,13 @@ export default function Markdown(props: MarkdownProps) {
           ) : (
             <Typography
               component="code"
-              variant="body1"
+              variant="body2"
               className={className}
               color="primary"
               sx={{
                 fontFamily: "monospace",
                 bgcolor: "grey.100",
-                p: 0.5,
+                p: 0.8,
                 borderRadius: 2,
                 fontWeight: 500,
               }}

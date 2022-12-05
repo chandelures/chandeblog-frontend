@@ -2,8 +2,6 @@ import { GetServerSideProps } from "next";
 
 interface postProps {
   slug: string;
-  title: string;
-  description: string;
   updated: string;
 }
 
@@ -18,7 +16,7 @@ function generateSiteMap(posts: postProps[]) {
          return `
        <url>
            <loc>${process.env.baseURL}/posts/${slug}</loc>
-           <lastmod>${updated}</lastmod>
+           <lastmod>${new Date(updated).toISOString()}</lastmod>
        </url>
      `;
        })
@@ -36,13 +34,10 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     if (data.next) await fetchPosts(data.next);
   };
   await fetchPosts(`${process.env.apiURL}/posts?page=1&size=5`);
-  console.log(posts);
   const sitemap = generateSiteMap(posts);
   res.setHeader("Content-Type", "text/xml");
-  // we send the XML to the browser
   res.write(sitemap);
   res.end();
-
   return {
     props: {},
   };
