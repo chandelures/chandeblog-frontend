@@ -26,19 +26,19 @@ let theme = createTheme({
       fontSize: "2.5rem",
     },
     h2: {
-      fontSize: "2rem"
+      fontSize: "1.8rem"
     },
     h3: {
-      fontSize: "1.8rem",
-    },
-    h4: {
-      fontSize: "1.6rem",
-    },
-    h5: {
       fontSize: "1.4rem",
     },
-    h6: {
+    h4: {
       fontSize: "1.2rem",
+    },
+    h5: {
+      fontSize: "1rem",
+    },
+    h6: {
+      fontSize: "1rem",
     },
     body1: {
       fontFamily: '"PT Sans", Helvetica, Arial, sans-serif',

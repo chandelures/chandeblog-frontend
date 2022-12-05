@@ -25,7 +25,7 @@ export default function Markdown(props: MarkdownProps) {
           <Typography
             variant="h1"
             color="text.primary"
-            sx={{ fontWeight: 600, my: 2 }}
+            sx={{ fontWeight: 600, mt: 4, mb: 2 }}
             gutterBottom
             {...props}
           ></Typography>
@@ -34,7 +34,7 @@ export default function Markdown(props: MarkdownProps) {
           <Typography
             variant="h2"
             color="text.primary"
-            sx={{ fontWeight: 600, my: 2 }}
+            sx={{ fontWeight: 600, mt: 3, mb: 2 }}
             gutterBottom
             {...props}
           ></Typography>
@@ -43,7 +43,7 @@ export default function Markdown(props: MarkdownProps) {
           <Typography
             variant="h3"
             color="text.primary"
-            sx={{ fontWeight: 600, my: 2 }}
+            sx={{ fontWeight: 600, mt: 3, mb: 2 }}
             gutterBottom
             {...props}
           ></Typography>
@@ -52,7 +52,7 @@ export default function Markdown(props: MarkdownProps) {
           <Typography
             variant="h4"
             color="text.primary"
-            sx={{ fontWeight: 600, my: 2 }}
+            sx={{ fontWeight: 600, mt: 3, mb: 2 }}
             gutterBottom
             {...props}
           ></Typography>
@@ -61,7 +61,7 @@ export default function Markdown(props: MarkdownProps) {
           <Typography
             variant="h5"
             color="text.primary"
-            sx={{ fontWeight: 600, my: 2 }}
+            sx={{ fontWeight: 600, mt: 3, mb: 2 }}
             gutterBottom
             {...props}
           ></Typography>
@@ -71,7 +71,7 @@ export default function Markdown(props: MarkdownProps) {
             variant="h6"
             color="text.primary"
             gutterBottom
-            sx={{ my: 2 }}
+            sx={{ fontWeight: 600, my: 2 }}
             {...props}
           ></Typography>
         ),
@@ -81,7 +81,7 @@ export default function Markdown(props: MarkdownProps) {
             variant="body1"
             color="text.primary"
             gutterBottom
-            sx={{ my: 1 }}
+            sx={{ mb: 2 }}
             {...props}
           ></Typography>
         ),
@@ -122,7 +122,7 @@ export default function Markdown(props: MarkdownProps) {
               fontFamily: "monospace",
               fontSize: 15,
               my: 2,
-              py: 0.5,
+              py: 1,
               overflow: "auto",
             }}
             {...props}
@@ -140,9 +140,22 @@ export default function Markdown(props: MarkdownProps) {
               {String(children).replace(/\n$/, "")}
             </SyntaxHighlighter>
           ) : (
-            <code className={className} {...props}>
+            <Typography
+              component="code"
+              variant="body1"
+              className={className}
+              color="primary"
+              sx={{
+                fontFamily: "monospace",
+                bgcolor: "grey.100",
+                p: 0.5,
+                borderRadius: 2,
+                fontWeight: 500,
+              }}
+              {...props}
+            >
               {children}
-            </code>
+            </Typography>
           );
         },
       }}

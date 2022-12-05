@@ -9,8 +9,8 @@ export default function Footer() {
       >
         <Typography variant="body2" color="text.secondary" align="center">
           {"Copyright © "}
-          <Link color="inherit" href="/">
-            chandelure
+          <Link href="/">
+            {"chandelures' blog"}
           </Link>{" "}
           {`2021-${new Date().getFullYear()}`}
           {"."}
