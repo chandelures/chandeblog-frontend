@@ -1,10 +1,14 @@
-import { ReactElement } from "react";
+import { ReactNode } from "react";
 import { Container } from "@mui/material";
 
 import Navbar from "components/base/Navbar";
 import Footer from "components/base/Footer";
 
-export default function Layout({ children }: { children: ReactElement }) {
+interface LayoutProps {
+  children: ReactNode;
+}
+
+export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <Navbar />
