@@ -10,7 +10,7 @@ import {
 const logo = "CBlOG";
 const links = [
   { name: "Home", to: "/" },
-  { name: "About", to: "#" },
+  { name: "About", to: "/posts/About" },
 ];
 
 export default function Navbar() {
