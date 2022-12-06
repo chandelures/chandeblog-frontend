@@ -10,7 +10,7 @@ const socials = [
 export default function Social() {
   return (
     <>
-      <Typography variant="h6" gutterBottom color="text.primary">
+      <Typography variant="h4" gutterBottom color="text.primary">
         Links
       </Typography>
       {socials.map((social) => (
