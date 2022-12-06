@@ -2,7 +2,7 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { Grid } from "@mui/material";
 
-import Layout from "components/base/Layout"
+import Layout from "components/base/Layout";
 import Content from "components/post/Content";
 import SideBar from "components/post/Sidebar";
 
@@ -41,7 +41,7 @@ export default function Post(props: PostProps) {
   return (
     <Layout>
       <Head>
-        <title>CBlog</title>
+        <title>{`CBlog - ${post.title}`}</title>
         <meta name="description" content={post.description.slice(0, 50)} />
       </Head>
       <Grid container spacing={6} sx={{ my: 2 }}>
