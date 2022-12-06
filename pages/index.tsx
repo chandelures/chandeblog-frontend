@@ -2,8 +2,8 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { Grid, Stack } from "@mui/material";
 
+import { name, description, apiURL } from "utils/constant";
 import Layout from "components/base/Layout";
-
 import PostList from "components/index/PostList";
 import Paginator from "components/index/Paginator";
 import Sidebar from "components/index/SideBar";
@@ -32,9 +32,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   );
   const page = parseInt(String(query.page)) || 1;
   const size = 5;
-  const request = await fetch(
-    `${process.env.apiURL}/posts?page=${page}&size=${size}`
-  );
+  const request = await fetch(`${apiURL}/posts?page=${page}&size=${size}`);
   const data = await request.json();
   const pageCount = Math.ceil(data.count / size);
 
@@ -49,8 +47,8 @@ export default function Home(props: HomeProps) {
   return (
     <Layout>
       <Head>
-        <title>CBlog</title>
-        <meta name="description" content="chandelure's blog" />
+        <title>{name}</title>
+        <meta name="description" content={description} />
       </Head>
       <Grid container spacing={6} sx={{ my: 2 }}>
         <Grid item xs={12} lg={3}>

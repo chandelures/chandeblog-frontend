@@ -6,8 +6,8 @@ import {
   Typography,
   Box,
 } from "@mui/material";
+import { logo } from "utils/constant";
 
-const logo = "CBlOG";
 const links = [
   { name: "Home", to: "/" },
   { name: "About", to: "/posts/About" },

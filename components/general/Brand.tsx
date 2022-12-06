@@ -1,7 +1,5 @@
 import { Typography } from "@mui/material";
-
-const logo = "CBLOG";
-const description = "chandelure's blog";
+import { description, logo } from "utils/constant";
 
 export default function Brand() {
   return (
