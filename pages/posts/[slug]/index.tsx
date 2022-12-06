@@ -2,6 +2,7 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { Grid } from "@mui/material";
 
+import { name, apiURL } from "utils/constant";
 import Layout from "components/base/Layout";
 import Content from "components/post/Content";
 import SideBar from "components/post/Sidebar";
@@ -24,7 +25,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     "public, s-maxage=30, stale-while-revalidate=59"
   );
   const slug = query.slug;
-  const request = await fetch(`${process.env.apiURL}/posts/${slug}`);
+  const request = await fetch(`${apiURL}/posts/${slug}`);
   if (request.status == 404) {
     return {
       notFound: true,
@@ -41,7 +42,7 @@ export default function Post(props: PostProps) {
   return (
     <Layout>
       <Head>
-        <title>{`CBlog - ${post.title}`}</title>
+        <title>{`${name} - ${post.title}`}</title>
         <meta name="description" content={post.description.slice(0, 50)} />
       </Head>
       <Grid container spacing={6} sx={{ my: 2 }}>

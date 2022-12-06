@@ -1,4 +1,5 @@
 import { Box, Container, Typography, Link } from "@mui/material";
+import { description } from "utils/constant";
 
 export default function Footer() {
   return (
@@ -9,9 +10,7 @@ export default function Footer() {
       >
         <Typography variant="body2" color="text.secondary" align="center">
           {"Copyright © "}
-          <Link href="/">
-            {"chandelures' blog"}
-          </Link>{" "}
+          <Link href="/">{description}</Link>{" "}
           {`2021-${new Date().getFullYear()}`}
           {"."}
         </Typography>
